@@ -11,7 +11,7 @@ export default function ProductCard({producto}) {
         {producto.descuento > 0 
         ? <div>
             <div className="text-xs line-through">$ {producto.precio}</div>
-            <div className="text-2xl tracking-wide font-semibold">$ {producto.precio - (producto.precio * producto.descuento/100)}</div>
+            <div className="text-2xl tracking-wide font-semibold">$ {producto.precio * (1 - producto.descuento/100)}</div>
           </div>
         : <div className="text-2xl tracking-wide pt-2 font-semibold">$ {producto.precio}</div>
         }

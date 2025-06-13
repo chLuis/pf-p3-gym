@@ -4,17 +4,29 @@ import { PRODUCTOS_CONST } from "../lib/productos"
 
 export const Productos = () => {
   //LUIS
-const CATEGORIAS = ["toallas","mancuernas","proteinas","guantes","accesorios","suplementos","discos","barras","ropa"]
+  const CATEGORIAS = ["toallas","mancuernas","proteinas","guantes","accesorios","suplementos","discos","barras","ropa"]
   const [productos, setProductos] = useState(PRODUCTOS_CONST)
   const [minPrice, setMinPrice] = useState(0)
   const [maxPrice, setMaxPrice] = useState(10000)
   const [category, setCategory] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+
 
   useEffect(() => {
-    category.length === 0 
-    ? setProductos(PRODUCTOS_CONST)
-    : setProductos(PRODUCTOS_CONST.filter(producto => category.some(text => text === producto.categoria)))
-  },[category])
+    setIsLoading(true)
+    const timeout = setTimeout(() => {
+      const handleFilter = () => {
+        category.length === 0 
+        ? setProductos(PRODUCTOS_CONST.filter(producto => (producto.precio * (1 - producto.descuento/100)) >= minPrice && (producto.precio * (1 - producto.descuento/100)) <= maxPrice))
+        : setProductos(PRODUCTOS_CONST.filter(producto => (producto.precio * (1 - producto.descuento/100)) >= minPrice && (producto.precio * (1 - producto.descuento/100)) <= maxPrice && category.some(text => text === producto.categoria)))
+      }
+      handleFilter()
+      setIsLoading(false)
+    }, 500)
+    return () => clearTimeout(timeout)
+  },[category, maxPrice, minPrice])
+
+
   const handleMinPrice = (value) => {
     setMinPrice(value)
   }
@@ -22,17 +34,24 @@ const CATEGORIAS = ["toallas","mancuernas","proteinas","guantes","accesorios","s
   const handleMaxPrice = (value) => {
     setMaxPrice(value)
   }
-  // producto.precio >= minPrice && producto.precio <= maxPrice && 
+
+  const handleCategory = (value) => {
+    if(category.some(text => text === value)){
+      setCategory(category.filter(text => text !== value))
+    }else{
+      setCategory([...category, value])
+    }
+  }
 
   
   return (
     <div className="w-full max-w-7xl mx-auto p-4 grid grid-cols-8 gap-6">
-      <div className="col-span-2 flex flex-col gap-2 px-12">
+      <div className="col-span-8 sm:col-span-3 md:col-span-2 flex flex-col gap-2">
         <div className="border rounded-md flex flex-col gap-2 p-4">
         <p>Filtrar por:</p>
           {CATEGORIAS.map((categoria, index) =>
           <label key={index} className="flex gap-2 items-center cursor-pointer group" >
-            <input type="checkbox" checked={category.some(text => text === categoria)} value={categoria} onChange={(e) => setCategory([e.target.value])} className="p-2 border-b"/>
+            <input type="checkbox" checked={category.some(text => text === categoria)} value={categoria} onChange={(e) => handleCategory(e.target.value)} className="p-2 border-b"/>
             <span className="capitalize group-hover:text-yellow-300">{categoria}</span>
           </label>
           )}
@@ -46,7 +65,7 @@ const CATEGORIAS = ["toallas","mancuernas","proteinas","guantes","accesorios","s
 
         </div>
       </div>
-      <div className="col-span-6 grid grid-cols-3 gap-7">
+      <div className={`${isLoading ? "opacity-30 pointer-events-none" : ""} col-span-8 sm:col-span-5 md:col-span-6 grid grid-cols-2 lg:grid-cols-3 gap-7`}>
         {productos.map((producto, index) =>
           <ProductCard key={index} producto={producto} />
         )}
