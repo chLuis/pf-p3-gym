@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function ProductCard({producto}) {
   return (
-    <Link to={`${producto.id}`} className="flex flex-col border rounded-md overflow-clip !text-yellow-300 hover:shadow hover:shadow-yellow-300">
+    <Link to={`${producto.id}`} className="flex !text-primary flex-col border rounded-md overflow-clip  hover:shadow hover:shadow-primary duration-200">
       <img src="https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp" alt={producto.nombre} className=""/>
       <div className="px-2 pt-1 pb-6">
         <div className="font-semibold">{producto.marca}</div>
