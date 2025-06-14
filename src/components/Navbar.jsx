@@ -6,7 +6,7 @@ export const Navbar = () => {
 
   return (
     <div className="flex gap-2 items-center justify-between px-4 py-1 w-full border-b font-anton border-b-primary">
-      <Link to="/" className="flex flex-nowrap gap-1 items-center">
+      <Link to="/" className="flex flex-nowrap gap-1 p-1 items-center">
         <img src="/logo.webp" alt="logo" className="rounded-full aspect-square w-20" />
         <span className="text-4xl font-semibold text-primary font-anton">POWERHOUSE</span>
       </Link>
