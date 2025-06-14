@@ -6,7 +6,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Toalla ultra absorbente de secado rápido, ideal para entrenamientos intensos.",
     "precio": 2500,
     "stock": 120,
-    "imagen": "https://example.com/img/toalla-microfibra.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "toallas",
     "descuento": 10
   },
@@ -17,7 +17,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Mancuerna de goma antideslizante con agarre ergonómico.",
     "precio": 5500,
     "stock": 50,
-    "imagen": "https://example.com/img/mancuerna-5kg.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "mancuernas",
     "descuento": 5
   },
@@ -28,7 +28,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Suplemento proteico para recuperación y aumento muscular.",
     "precio": 9500,
     "stock": 80,
-    "imagen": "https://example.com/img/proteina-whey-chocolate.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "proteinas",
     "descuento": 15
   },
@@ -39,7 +39,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Guantes acolchados con ventilación y agarre reforzado.",
     "precio": 3200,
     "stock": 75,
-    "imagen": "https://example.com/img/guantes-pro.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "guantes",
     "descuento": 0
   },
@@ -50,7 +50,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Superficie antideslizante para yoga, pilates o estiramientos.",
     "precio": 4800,
     "stock": 30,
-    "imagen": "https://example.com/img/colchoneta-yoga.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 20
   },
@@ -61,7 +61,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Soporte lumbar para levantamiento de peso.",
     "precio": 3900,
     "stock": 40,
-    "imagen": "https://example.com/img/cinturon-fuerza.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 10
   },
@@ -72,7 +72,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Ideal para entrenamientos de fuerza e hipertrofia.",
     "precio": 9900,
     "stock": 25,
-    "imagen": "https://example.com/img/mancuerna-10kg.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "mancuernas",
     "descuento": 10
   },
@@ -83,7 +83,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Mejora la fuerza y el rendimiento en entrenamientos intensos.",
     "precio": 4500,
     "stock": 60,
-    "imagen": "https://example.com/img/creatina.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "suplementos",
     "descuento": 5
   },
@@ -94,7 +94,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Vaso mezclador con rejilla para batidos sin grumos.",
     "precio": 1200,
     "stock": 100,
-    "imagen": "https://example.com/img/shaker.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 0
   },
@@ -105,7 +105,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Protección y soporte para entrenamientos de pierna.",
     "precio": 2200,
     "stock": 45,
-    "imagen": "https://example.com/img/rodillera.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 5
   },
@@ -116,7 +116,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Set de 2 toallas pequeñas para manos y rostro.",
     "precio": 1800,
     "stock": 80,
-    "imagen": "https://example.com/img/toallas-mano.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "toallas",
     "descuento": 0
   },
@@ -127,7 +127,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Proteína vegetal ideal para veganos y alérgicos a lácteos.",
     "precio": 11000,
     "stock": 35,
-    "imagen": "https://example.com/img/proteina-vegana.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "proteinas",
     "descuento": 15
   },
@@ -138,7 +138,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "5 niveles de resistencia para entrenamientos funcionales.",
     "precio": 3500,
     "stock": 60,
-    "imagen": "https://example.com/img/bandas.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 10
   },
@@ -149,7 +149,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Sistema con discos intercambiables para variar el peso.",
     "precio": 21500,
     "stock": 15,
-    "imagen": "https://example.com/img/mancuerna-ajustable.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "mancuernas",
     "descuento": 5
   },
@@ -160,7 +160,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Diseño ergonómico para manos más pequeñas.",
     "precio": 2900,
     "stock": 40,
-    "imagen": "https://example.com/img/guantes-mujer.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "guantes",
     "descuento": 0
   },
@@ -171,7 +171,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Suplemento para quema de grasa y energía.",
     "precio": 7200,
     "stock": 28,
-    "imagen": "https://example.com/img/lcarnitina.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "suplementos",
     "descuento": 10
   },
@@ -182,7 +182,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Alta pureza, ideal para después del entrenamiento.",
     "precio": 12500,
     "stock": 20,
-    "imagen": "https://example.com/img/proteina-isolate.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "proteinas",
     "descuento": 20
   },
@@ -193,7 +193,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Tamaño grande para cubrir bancas o usar como alfombra.",
     "precio": 3200,
     "stock": 25,
-    "imagen": "https://example.com/img/toalla-xl.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "toallas",
     "descuento": 5
   },
@@ -204,7 +204,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Cuerda con rodamientos para mayor velocidad.",
     "precio": 2400,
     "stock": 50,
-    "imagen": "https://example.com/img/cuerda-saltar.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 0
   },
@@ -215,7 +215,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Recubrimiento suave y colores vivos.",
     "precio": 4600,
     "stock": 35,
-    "imagen": "https://example.com/img/mancuerna-vinilo.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "mancuernas",
     "descuento": 5
   },
@@ -226,7 +226,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Disco de entrenamiento con cubierta de goma para absorción de impacto.",
     "precio": 8800,
     "stock": 20,
-    "imagen": "https://example.com/img/disco-10kg.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "discos",
     "descuento": 10
   },
@@ -237,7 +237,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Barra profesional con rodamientos y agarre moleteado.",
     "precio": 26000,
     "stock": 10,
-    "imagen": "https://example.com/img/barra-olimpica.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "barras",
     "descuento": 5
   },
@@ -248,7 +248,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Botella térmica para mantener tu bebida fría o caliente.",
     "precio": 3400,
     "stock": 60,
-    "imagen": "https://example.com/img/botella-termica.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 0
   },
@@ -259,7 +259,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Ideal para ganancia de masa muscular rápida.",
     "precio": 16000,
     "stock": 15,
-    "imagen": "https://example.com/img/mass-gainer.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "proteinas",
     "descuento": 15
   },
@@ -270,7 +270,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Soporte para muslos con ajuste de velcro.",
     "precio": 2800,
     "stock": 35,
-    "imagen": "https://example.com/img/muslera.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 0
   },
@@ -281,7 +281,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Rueda para fortalecer core, abdominales y hombros.",
     "precio": 3300,
     "stock": 40,
-    "imagen": "https://example.com/img/rueda-abdominal.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 10
   },
@@ -292,7 +292,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Aminoácidos esenciales para recuperación muscular.",
     "precio": 6900,
     "stock": 30,
-    "imagen": "https://example.com/img/bcaa.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "suplementos",
     "descuento": 10
   },
@@ -303,7 +303,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Máxima rigidez para levantamientos pesados.",
     "precio": 7100,
     "stock": 18,
-    "imagen": "https://example.com/img/cinturon-power.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 15
   },
@@ -314,7 +314,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Kettlebell ideal para entrenamiento funcional y fuerza.",
     "precio": 7400,
     "stock": 22,
-    "imagen": "https://example.com/img/pesa-rusa-12kg.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "mancuernas",
     "descuento": 5
   },
@@ -325,7 +325,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Banda elástica suave para recuperación y estiramientos.",
     "precio": 1900,
     "stock": 55,
-    "imagen": "https://example.com/img/tensor.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 0
   },
@@ -336,7 +336,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Aumenta el foco, energía y rendimiento.",
     "precio": 8400,
     "stock": 25,
-    "imagen": "https://example.com/img/preentreno.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "suplementos",
     "descuento": 20
   },
@@ -347,7 +347,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Mayor protección en palma y agarre suave.",
     "precio": 2700,
     "stock": 40,
-    "imagen": "https://example.com/img/guantes-gel.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "guantes",
     "descuento": 0
   },
@@ -358,7 +358,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Ideal para guardar llaves o celular mientras entrenás.",
     "precio": 3100,
     "stock": 40,
-    "imagen": "https://example.com/img/toalla-bolsillo.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "toallas",
     "descuento": 5
   },
@@ -369,7 +369,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Disco de precisión para progresión de cargas.",
     "precio": 3500,
     "stock": 30,
-    "imagen": "https://example.com/img/disco-fraccional.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "discos",
     "descuento": 0
   },
@@ -380,7 +380,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Superficie texturizada para mejor agarre durante ejercicios de piso.",
     "precio": 4700,
     "stock": 38,
-    "imagen": "https://example.com/img/mat-fitness.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 10
   },
@@ -391,7 +391,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Rápida absorción, ideal para recuperación post entreno.",
     "precio": 13200,
     "stock": 18,
-    "imagen": "https://example.com/img/proteina-cafe.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "proteinas",
     "descuento": 20
   },
@@ -402,7 +402,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Protección solar con tejido respirable.",
     "precio": 2600,
     "stock": 42,
-    "imagen": "https://example.com/img/gorra-running.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 5
   },
@@ -413,7 +413,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Para automasajes y recuperación muscular.",
     "precio": 3900,
     "stock": 35,
-    "imagen": "https://example.com/img/foam-roller.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "accesorios",
     "descuento": 10
   },
@@ -424,7 +424,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Short liviano y cómodo para entrenamiento o running.",
     "precio": 4100,
     "stock": 45,
-    "imagen": "https://example.com/img/short-hombre.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "ropa",
     "descuento": 10
   },
@@ -435,7 +435,7 @@ export const PRODUCTOS_CONST = [
     "descripcion": "Remera con tecnología DryFit para mayor frescura.",
     "precio": 3600,
     "stock": 50,
-    "imagen": "https://example.com/img/remera-mujer.jpg",
+    "imagen": 'https://http2.mlstatic.com/D_Q_NP_2X_652624-MLA73223130266_122023-E.webp',
     "categoria": "ropa",
     "descuento": 10
   }
