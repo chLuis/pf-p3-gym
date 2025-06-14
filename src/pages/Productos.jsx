@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react"
 import ProductCard from "../components/product-card"
 import { PRODUCTOS_CONST } from "../lib/productos"
-import { BsArrowDown } from "react-icons/bs"
 import { BiChevronDown } from "react-icons/bi"
 
 export const Productos = () => {
-
   const CATEGORIAS = ["toallas","mancuernas","proteinas","guantes","accesorios","suplementos","discos","barras","ropa"]
+  
   const [productos, setProductos] = useState(PRODUCTOS_CONST)
   const [minPrice, setMinPrice] = useState(0)
   const [maxPrice, setMaxPrice] = useState(10000)
