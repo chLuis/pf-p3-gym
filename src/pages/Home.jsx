@@ -14,16 +14,16 @@ export const Home = () => {
         <section className="w-1/2 bg-amber-200 text-black p-6">
           <h1 className="text-3xl font-bold mb-6">Otro titulo</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis harum sit sed atque vel perspiciatis quod pariatur illum nam hic. Ab perspiciatis doloribus facilis distinctio a aliquid porro corporis in.</p>
-          <button className="block mx-auto !rounded-full text-center !bg-blue-800 hover:!bg-blue-700 text-yellow-300 !px-6 !py-3 !text-lg !font-semibold mt-6">Conoce nuestos planes</button>
+          <button className="block mx-auto !rounded-full text-center !bg-blue-800 hover:!bg-blue-700 !text-primary !px-6 !py-3 !text-lg !font-semibold mt-6">Conoce nuestos planes</button>
         </section>
       </div>
-      <div className="flex bg-black">
-        <aside className="w-1/2 bg-black text-white p-6 sticky top-0 h-fit self-start">
+      <div className="flex">
+        <aside className="w-1/3 text-white p-6 sticky top-0 h-fit self-start">
           <h1 className="text-3xl font-bold mb-6">Todas las actividades que buscas</h1>
           <p>En Powerhouse tenemos todas las actividades que buscas, combinar distintas actividades es fundamental para mantener la motivacion y disfrutrar al maximo tu rutina deportiva</p>
           <button className="block mx-auto rounded-full text-center bg-amber-900 text-black hover:bg-amber-200 px-6 py-3 text-lg font-semibold mt-6">Asociate</button>
         </aside>
-        <section className="w-1/2 bg-black text-white p-6 space-y-12">
+        <section className="w-2/3 text-white p-6 space-y-12">
           <div className="flex items-center gap-6">
             <img src="https://www.sportclub.com.ar/assets/Actividades1-6de739b8.png" alt="musculacion" className="w-1/2 rounded-xl"/>
             <p className="w-1/2">Trabajá la fuerza y resistencia, desarrollando todos los grupos musculares. Prevení lesiones y mejorá tu calidad de vida. Contamos con +800 gimnasios equipados con la última tecnología.</p>
