@@ -47,14 +47,14 @@ export const Productos = () => {
 
   
   return (
-    <div className="w-full max-w-7xl mx-auto p-4 grid grid-cols-8 gap-6 !text-primary">
+    <div className="w-full max-w-7xl mx-auto p-4 grid grid-cols-8 gap-6 !text-primary font-anton">
     {!showFilter ?<button className="hover:!border-primary col-span-8 sm:col-span-3 md:col-span-2 h-fit flex flex-nowrap gap-2 items-center justify-center" onClick={() => setShowFilter(true)}>Filtrar <BiChevronDown /></button>
       :<div className="col-span-8 sm:col-span-3 md:col-span-2 flex flex-col gap-2">
         <div className="border rounded-md flex flex-col gap-2 p-4">
         <p>Filtrar por:</p>
           {CATEGORIAS.map((categoria, index) =>
           <label key={index} className="flex gap-2 items-center cursor-pointer group" >
-            <input type="checkbox" checked={category.some(text => text === categoria)} value={categoria} onChange={(e) => handleCategory(e.target.value)} className="p-2 border-b"/>
+            <input type="checkbox" checked={category.some(text => text === categoria)} value={categoria} onChange={(e) => handleCategory(e.target.value)} className="p-2 border-b accent-primary"/>
             <span className="capitalize group-hover:text-yellow-300">{categoria}</span>
           </label>
           )}
@@ -62,9 +62,9 @@ export const Productos = () => {
         <div className="border rounded-md flex flex-col gap-2 p-4">
           <p>Rango de precio</p>
           <span>Desde {minPrice}</span>
-          <input type="range" className="p-2 border-b" defaultValue={0} step={50} min={0} max={10000} onChange={(e) => handleMinPrice(e.target.value)}/>
+          <input type="range" className="p-2 border-b accent-primary" defaultValue={0} step={50} min={0} max={10000} onChange={(e) => handleMinPrice(e.target.value)}/>
           <span>Hasta {maxPrice}</span>
-          <input type="range" className="p-2 border-b" defaultValue={10000} min={minPrice} max={10000} onChange={(e) => handleMaxPrice(e.target.value)}/>
+          <input type="range" className="p-2 border-b accent-primary" defaultValue={10000} min={minPrice} max={10000} onChange={(e) => handleMaxPrice(e.target.value)}/>
 
         </div>
         <button className="hover:!border-primary flex flex-nowrap gap-2 items-center justify-center" onClick={() => setShowFilter(false)}>Ocultar <BiChevronDown className="rotate-180"/></button>
