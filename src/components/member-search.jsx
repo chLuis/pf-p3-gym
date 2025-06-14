@@ -9,28 +9,33 @@ export default function MemberSearch() {
   const handleMember = () => {
     setMemberModal(true);
   };
+  const handleCloseModal = () => {
+    setMemberModal(false);
+    setShowMember(false);
+  }
+
   return (
     <div>
       <div
         className="!text-primary hover:!text-black hover:bg-primary border px-2 py-2 !font-bold relative group capitalize cursor-pointer duration-200"
         onClick={handleMember}
       >
-        Miembros
+        Socios
       </div>
       {memberModal && (
         <div
-          onClick={() => setMemberModal(false)}
+          onClick={handleCloseModal}
           className="fixed inset-0 flex justify-center items-center bg-black/50 backdrop-blur-md text-primary"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative bg-black p-4 max-w-80 w-full border-2 rounded-md m-auto"
+            className="animate-fade-in relative bg-black p-4 max-w-80 w-full border-2 rounded-md m-auto"
           >
             <LuX
-              onClick={() => setMemberModal(false)}
+              onClick={handleCloseModal}
               className="absolute top-2 right-2 cursor-pointer"
             />
-            <p className="text-center text-2xl pb-6">Miembros</p>
+            <p className="text-center text-2xl pb-6">Socios</p>
             <div className="flex flex-nowrap gap-4 items-center justify-center">
               <input
                 type="text"
