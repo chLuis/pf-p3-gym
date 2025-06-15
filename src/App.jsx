@@ -9,6 +9,7 @@ import { Producto } from "./pages/Producto";
 import { Admin } from "./pages/Admin";
 import { Footer } from "./components/Footer";
 import { Error404 } from "./pages/Error404";
+import { Carrito } from "./pages/Carrito";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/productos/:id" element={<Producto />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<Error404 />} />
+        <Route path="/carrito" element={<Carrito/>}/>
       </Routes>
       </main>
       <Footer />
