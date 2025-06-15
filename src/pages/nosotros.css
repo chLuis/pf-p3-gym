@@ -1,0 +1,28 @@
+
+
+.titulo-nosotros {
+    color: #070601;
+
+}
+ .titulo-noso{
+    color: #FFD700;
+
+ }
+.imagen-nosotros {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cifras-nosotros{
+    color: #FFD700;
+    display: flex;
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    justify-content: center;
+    font-size: 200%;
+
+}
+
+.contac-cambio{
+    color: #FFD700 ;
+}
