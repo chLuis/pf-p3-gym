@@ -20,7 +20,7 @@ export const Admin = () => {
           <button onClick={() => setTabRender("productos")} className={`${tabRender === "productos" ? "!border-primary text-primary" : "!border-none" } flex flex-nowrap gap-1 items-center hover:text-primary`}><BiBox /> Productos</button>
           <button onClick={() => setTabRender("socios")} className={`${tabRender === "socios" ? "!border-primary text-primary" : "!border-none" } flex flex-nowrap gap-1 items-center hover:text-primary`}><BiUser /> Membresias</button>
         </div>
-        <div className='w-full'>
+        <div className='w-full pt-4'>
           {tabRender === "imagenes" && <AdminImagenes /> }
           {tabRender === "productos" && <AdminProductos /> }
           {tabRender === "socios" && <AdminSocios /> }
