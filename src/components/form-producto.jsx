@@ -8,7 +8,7 @@ export default function FormProducto({producto}) {
     const data = Object.fromEntries(formData)
     console.log(data)
   }
-console.log(producto);
+
   useEffect(() => {
     if (!formRef.current) return;
     formRef.current.reset();
