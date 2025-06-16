@@ -8,8 +8,10 @@ export const AdminProductos = () => {
     nombre: "",
     precio: "",
     stock: "",
-    categoria: "",
-    imagen: "",
+    categoria: "elegir",
+    marca: "elegir",
+    imagen: "elegir",
+    descuento: "",
     descripcion: "",
   }
   const [productoPut, setProductoPut] = React.useState(initialValues)
