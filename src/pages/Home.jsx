@@ -12,16 +12,16 @@ export const Home = () => {
           <h1 className="text-3xl font-bold text-yellow-600 mb-6">Titulo</h1>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur aperiam voluptatem laudantium, praesentium, ut, illo culpa repellendus vel nemo quasi esse soluta eligendi blanditiis vitae perspiciatis! Ipsum ea aliquam ullam.</p>
         </aside>
-        <section className="w-1/2 bg-primary text-black p-6"> {/*Section ocupa el 50% de la pantalla al lado derecho */}
-          <h1 className="text-3xl font-bold mb-6">Otro titulo</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis harum sit sed atque vel perspiciatis quod pariatur illum nam hic. Ab perspiciatis doloribus facilis distinctio a aliquid porro corporis in.</p>
+        <section className="w-1/2 bg-primary text-black p-6 flex flex-col justify-between min-h-[500px]"> {/*Section ocupa el 50% de la pantalla al lado derecho */}
+          <h1 className="text-3xl font-bold mb-6">Conocé nuestros planes</h1>
+          <p className="pt-10 p-10 text-xl">En Powerhouse Gym nos dedicamos a transformar tu bienestar en una experiencia integral. Nuestras instalaciones están diseñadas para adaptarse a todos los niveles y objetivos, desde quienes recién comienzan hasta quienes ya llevan tiempo entrenando. Ofrecemos un espacio moderno y totalmente equipado con máquinas de última generación, amplias salas de musculación, entrenamiento funcional, clases grupales, piscina, actividades al aire libre y propuestas específicas para adultos mayores y niños. Además, contamos con entrenadores profesionales que te acompañan en cada etapa, guiándote y motivándote para que logres tus metas de forma saludable y sostenida. Porque sabemos que cada persona es única, en Powerhouse podés elegir el plan que mejor se adapte a vos, combinando comodidad, variedad de disciplinas y acceso a múltiples sedes. Tu bienestar empieza hoy, y estamos acá para acompañarte en ese camino.</p>
           <ScrollLink
             to="planes"
             smooth={true}
             duration={900}
             className="!block !mx-auto !rounded-full text-center !bg-blue-800 hover:!bg-blue-700 !text-primary !px-6 !py-3 !text-lg !font-semibold !mt-6 !cursor-pointer"
           > {/*Scroll con animacion hacia los planes */}
-            Conocé nuestros planes
+            Ver planes y precios
           </ScrollLink>
         </section>
       </div>
