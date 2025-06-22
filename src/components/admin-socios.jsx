@@ -2,40 +2,25 @@ import React from 'react'
 import FormSocio from './form-socio'
 import { PiBroom } from 'react-icons/pi'
 import FormPlan from './form-socio-plan'
-import axios from 'axios'
+import DeleteSocio from './admin-socio-delete'
+import { getSocios } from '../services/socios.service'
 
 export const AdminSocios = () => {
   const [socioPatch, setSocioPatch] = React.useState(initialValues)
   const [socios, setSocios] = React.useState([]);
 
-  async function getSocios() {
-    try{
-      const {data} = await axios.get(`${import.meta.env.VITE_BACK}/socios`)
-      setSocios(data.data)
-      return data
-    } catch (error) {
-      console.log(error);
-    }
+
+  function cleanForm() {
+    setSocioPatch(initialValues)
   }
 
-  async function handleDelete(id_socio) {
-    try {
-      const {data} = await axios.delete(`${import.meta.env.VITE_BACK}/socios/${id_socio}`)
-      if (data.status === 200) {
-        alert("Socio eliminado con éxito")
-        getSocios()
-      }
-      else
-        alert("Error al eliminar socio")
-    } catch (error) {
-      console.log(error);
-    }
+  async function fetchSocios() {
+    const response = await getSocios()
+    setSocios(response.data)
   }
-
 
   React.useEffect( () => {
-    getSocios();
-    //console.log(efecto, "SOY EL EFECTO");
+    fetchSocios()
   }, []);
 
 
@@ -43,12 +28,13 @@ export const AdminSocios = () => {
     <div className='flex flex-row gap-4 font-rubik'>
       <div className='flex flex-col gap-2'>
         <div className='sticky top-2 flex flex-col gap-2 items-center'>
-        <FormSocio socio={socioPatch} getSocios={getSocios}/>
-        
+        <FormSocio socioPatch={socioPatch} getSocios={fetchSocios} cleanForm={cleanForm}/>
         {socioPatch?.nombre &&
           <>
-            <FormPlan id_socio={socioPatch.id_socio} getSocios={getSocios}/>
-            <button onClick={() => setSocioPatch(initialValues)} className='!bg-primary w-full text-black flex flex-nowrap gap-1 justify-center items-center'><PiBroom /> Limpiar formulario</button>
+            <FormPlan id_socio={socioPatch.id_socio} getSocios={fetchSocios} cleanForm={cleanForm}/>
+            <button onClick={cleanForm} className='!bg-primary w-full text-black flex flex-nowrap gap-1 justify-center items-center'>
+              <PiBroom /> Limpiar formulario
+            </button>
           </>
         }
       </div>
@@ -76,7 +62,7 @@ export const AdminSocios = () => {
                   <td className='min-w-32 max-w-32 p-1 text-center'>{socio.socio_hasta}</td>
                   <td className='min-w-52 max-w-52 p-1 flex flex-nowrap justify-end gap-1'>
                     <button className='text-white bg-blue-700 !p-1 hover:scale-105 duration-200' onClick={() => setSocioPatch(socio)}>Editar</button>
-                    <button className='text-white bg-red-700 !p-1 hover:scale-105 duration-200' onClick={() => handleDelete(socio.id_socio)}>Eliminar</button>
+                    <DeleteSocio id_socio={socio.id_socio} getSocios={fetchSocios} />
                   </td>
                 </tr>
               )}

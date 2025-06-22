@@ -1,32 +1,30 @@
 import { useEffect, useState } from "react"
 import ProductCard from "../components/product-card"
-import { PRODUCTOS_CONST } from "../lib/productos"
 import { BiChevronDown } from "react-icons/bi"
-import axios from "axios"
+import { fetchCategorias, fetchProductos } from "../services/productos.service"
 
 export const Productos = () => {
-  const CATEGORIAS = ["toallas","mancuernas","proteinas","guantes","accesorios","suplementos","discos","barras","ropa"]
-  
+  const [categorias, setCategorias] = useState([])
   const [productos, setProductos] = useState([])
   const [minPrice, setMinPrice] = useState(0)
   const [maxPrice, setMaxPrice] = useState(10000)
   const [category, setCategory] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
   const [showFilter, setShowFilter] = useState(false)
 
-  const fetchProductos = async () => {
-    try {
-      const {data} = await axios.get(`${import.meta.env.VITE_BACK}/productos/`)
-      console.log(data, "DATA_____");
-      if(data.status === 200) setProductos(data.data)
-    }
-    catch (error) {
-      console.log(error);
-    }
+
+  const fetchProductosAction = async () => {
+    const {status, data} = await fetchProductos()
+    if(status === 200) setProductos(data)
   }
-  
+
+  const fetchCategoriasAction = async () => {
+    const {status, data} = await fetchCategorias()
+    if(status === 200) setCategorias(data)
+  }
+
   useEffect(() => {
-    fetchProductos()
+    fetchProductosAction()
+    fetchCategoriasAction()
   },[])
 
   // useEffect(() => {
@@ -71,10 +69,10 @@ export const Productos = () => {
       :<div className="col-span-8 sm:col-span-3 md:col-span-2 flex flex-col gap-2">
         <div className="border rounded-md flex flex-col gap-2 p-4">
         <p>Filtrar por:</p>
-          {CATEGORIAS.map((categoria, index) =>
+          {categorias.map((categoria, index) =>
           <label key={index} className="flex gap-2 items-center cursor-pointer group" >
-            <input type="checkbox" checked={category.some(text => text === categoria)} value={categoria} onChange={(e) => handleCategory(e.target.value)} className="p-2 border-b accent-primary"/>
-            <span className="capitalize group-hover:text-yellow-300">{categoria}</span>
+            <input type="checkbox" checked={category.some(text => text === categoria.nombre)} value={categoria.nombre} onChange={(e) => handleCategory(e.target.value)} className="p-2 border-b accent-primary"/>
+            <span className="capitalize group-hover:text-yellow-300">{categoria.nombre}</span>
           </label>
           )}
         </div>
@@ -88,7 +86,8 @@ export const Productos = () => {
         </div>
         <button className="hover:!border-primary flex flex-nowrap gap-2 items-center justify-center" onClick={() => setShowFilter(false)}>Ocultar <BiChevronDown className="rotate-180"/></button>
       </div>}
-      <div className={`${isLoading ? "opacity-30 pointer-events-none" : ""} h-fit col-span-8 sm:col-span-5 md:col-span-6 grid grid-cols-2 lg:grid-cols-3 gap-7`}>
+      {/* <div className={`${isLoading ? "opacity-30 pointer-events-none" : ""} h-fit col-span-8 sm:col-span-5 md:col-span-6 grid grid-cols-2 lg:grid-cols-3 gap-7`}> */}
+      <div className={` h-fit col-span-8 sm:col-span-5 md:col-span-6 grid grid-cols-2 lg:grid-cols-3 gap-7`}>
         {productos.map((producto, index) =>
           <ProductCard key={index} producto={producto} />
         )}
