@@ -2,31 +2,46 @@ import { useEffect, useState } from "react"
 import ProductCard from "../components/product-card"
 import { PRODUCTOS_CONST } from "../lib/productos"
 import { BiChevronDown } from "react-icons/bi"
+import axios from "axios"
 
 export const Productos = () => {
   const CATEGORIAS = ["toallas","mancuernas","proteinas","guantes","accesorios","suplementos","discos","barras","ropa"]
   
-  const [productos, setProductos] = useState(PRODUCTOS_CONST)
+  const [productos, setProductos] = useState([])
   const [minPrice, setMinPrice] = useState(0)
   const [maxPrice, setMaxPrice] = useState(10000)
   const [category, setCategory] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [showFilter, setShowFilter] = useState(false)
 
-
+  const fetchProductos = async () => {
+    try {
+      const {data} = await axios.get(`${import.meta.env.VITE_BACK}/productos/`)
+      console.log(data, "DATA_____");
+      if(data.status === 200) setProductos(data.data)
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+  
   useEffect(() => {
-    setIsLoading(true)
-    const timeout = setTimeout(() => {
-      const handleFilter = () => {
-        category.length === 0 
-        ? setProductos(PRODUCTOS_CONST.filter(producto => (producto.precio * (1 - producto.descuento/100)) >= minPrice && (producto.precio * (1 - producto.descuento/100)) <= maxPrice))
-        : setProductos(PRODUCTOS_CONST.filter(producto => (producto.precio * (1 - producto.descuento/100)) >= minPrice && (producto.precio * (1 - producto.descuento/100)) <= maxPrice && category.some(text => text === producto.categoria)))
-      }
-      handleFilter()
-      setIsLoading(false)
-    }, 500)
-    return () => clearTimeout(timeout)
-  },[category, maxPrice, minPrice])
+    fetchProductos()
+  },[])
+
+  // useEffect(() => {
+  //   setIsLoading(true)
+  //   const timeout = setTimeout(() => {
+  //     const handleFilter = () => {
+  //       category.length === 0 
+  //       ? setProductos(PRODUCTOS_CONST.filter(producto => (producto.precio * (1 - producto.descuento/100)) >= minPrice && (producto.precio * (1 - producto.descuento/100)) <= maxPrice))
+  //       : setProductos(PRODUCTOS_CONST.filter(producto => (producto.precio * (1 - producto.descuento/100)) >= minPrice && (producto.precio * (1 - producto.descuento/100)) <= maxPrice && category.some(text => text === producto.categoria)))
+  //     }
+  //     handleFilter()
+  //     setIsLoading(false)
+  //   }, 500)
+  //   return () => clearTimeout(timeout)
+  // },[category, maxPrice, minPrice])
 
 
   const handleMinPrice = (value) => {

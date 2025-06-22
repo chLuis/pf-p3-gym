@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { BiUser } from "react-icons/bi";
 import { LuX } from "react-icons/lu";
+import { SOCIOS } from "../lib/socios";
 
 export default function MemberSearch() {
   const [memberModal, setMemberModal] = useState(false);
   const [showMember, setShowMember] = useState(false);
+  const [searchMember, setSearchMember] = useState("");
+  const [member, setMember] = useState({
+    nombre: "",
+    apellido: "",
+    dni: "",
+    plan: "",
+    vencimiento: "",
+  });
 
   const handleMember = () => {
     setMemberModal(true);
@@ -12,6 +21,15 @@ export default function MemberSearch() {
   const handleCloseModal = () => {
     setMemberModal(false);
     setShowMember(false);
+  }
+
+  const handleSearchMember = () => {
+    const member = SOCIOS.find(socio => socio.dni === searchMember)
+    console.log(member);
+    if(!member)
+      return alert("No se encontró el socio");
+    setMember(member)
+    setShowMember(true)
   }
 
   return (
@@ -42,11 +60,12 @@ export default function MemberSearch() {
                 placeholder="DNI"
                 inputMode="numeric"
                 pattern="[0-9]"
+                onChange={(e) => setSearchMember(e.target.value)}
                 className="border-b max-w-32 border-b-primary outline-none"
               />
               <button
                 type="button"
-                onClick={() => setShowMember(true)}
+                onClick={handleSearchMember}
                 className="bg-primary !border-primary text-white px-4 py-2 rounded-md"
               >
                 Buscar
@@ -56,9 +75,10 @@ export default function MemberSearch() {
               <div className="flex flex-nowrap gap-1 border rounded-md p-2 mt-6">
                 <BiUser className="min-w-8 mt-2" />
                 <div>
-                  <p className="font-semibold">Juan Gonzalez</p>
+                  <p className="font-semibold">{member?.nombre}</p>
+                  <p className="capitalize">Plan: {member?.plan}</p>
                   <p className="text-sm">
-                    Tu membresia finaliza el día <strong>24/07/2025</strong>
+                    Tu membresia finaliza el día <strong>{member?.vencimiento}</strong>
                   </p>
                 </div>
               </div>

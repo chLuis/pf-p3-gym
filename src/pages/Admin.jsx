@@ -16,11 +16,11 @@ export const Admin = () => {
       </header>
       <div className='border-t w-full p-4'>
         <div className='w-fit rounded-md px-2 py-1 flex flex-nowrap gap-3 mx-auto'>
-          <button onClick={() => setTabRender("imagenes")} className={`${tabRender === "imagenes" ? "!border-primary text-primary" : "!border-none" } flex flex-nowrap gap-1 items-center hover:text-primary`}><ImImage /> Imagenes</button>
-          <button onClick={() => setTabRender("productos")} className={`${tabRender === "productos" ? "!border-primary text-primary" : "!border-none" } flex flex-nowrap gap-1 items-center hover:text-primary`}><BiBox /> Productos</button>
-          <button onClick={() => setTabRender("socios")} className={`${tabRender === "socios" ? "!border-primary text-primary" : "!border-none" } flex flex-nowrap gap-1 items-center hover:text-primary`}><BiUser /> Membresias</button>
+          <button onClick={() => setTabRender("imagenes")} className={`${tabRender === "imagenes" ? "!border-primary text-black bg-primary" : "" } flex flex-nowrap gap-1 items-center border !border-black hover:!border-primary`}><ImImage /> Imagenes</button>
+          <button onClick={() => setTabRender("productos")} className={`${tabRender === "productos" ? "!border-primary text-black bg-primary" : "" } flex flex-nowrap gap-1 items-center border !border-black hover:!border-primary`}><BiBox /> Productos</button>
+          <button onClick={() => setTabRender("socios")} className={`${tabRender === "socios" ? "!border-primary text-black bg-primary" : "" } flex flex-nowrap gap-1 items-center border !border-black hover:!border-primary`}><BiUser /> Membresias</button>
         </div>
-        <div className='w-full'>
+        <div className='w-full max-w-7xl mx-auto pt-4'>
           {tabRender === "imagenes" && <AdminImagenes /> }
           {tabRender === "productos" && <AdminProductos /> }
           {tabRender === "socios" && <AdminSocios /> }
