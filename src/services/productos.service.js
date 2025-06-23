@@ -17,3 +17,21 @@ export const fetchCategorias = async () => {
     console.log(error);
   }
 };
+
+export const fetchImagenes = async () => {
+  try {
+    const { data } = await axios.get(`${import.meta.env.VITE_BACK}/productos/imagenes/`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchDescuentos = async () => {
+  try {
+    const { data } = await axios.get(`${import.meta.env.VITE_BACK}/productos/descuentos/`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
