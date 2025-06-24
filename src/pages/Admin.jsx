@@ -1,5 +1,5 @@
 import React from 'react'
-import { BiBox, BiUser } from 'react-icons/bi'
+import { BiBox, BiSquare, BiUser } from 'react-icons/bi'
 import { ImImage } from 'react-icons/im'
 import { AdminImagenes } from '../components/admin-imagenes'
 import { AdminProductos } from '../components/admin-productos'
@@ -9,6 +9,14 @@ import { AdminDescuentos } from '../components/admin-descuentos'
 
 export const Admin = () => {
   const [tabRender, setTabRender] = React.useState("categorias")
+  const opciones = [
+    {nombre: "categorias", icono: <ImImage />},
+    {nombre: "imagenes", icono: <ImImage />},
+    {nombre: "descuentos", icono: <ImImage />},
+    {nombre: "productos", icono: <BiBox />},
+    {nombre: "socios", icono: <BiUser />},
+  ]
+
 
   return (
     <div className='min-h-[150dvh]'>
@@ -18,11 +26,10 @@ export const Admin = () => {
       </header>
       <div className='border-t w-full p-4'>
         <div className='w-fit rounded-md px-2 py-1 flex flex-nowrap gap-3 mx-auto'>
-          <button onClick={() => setTabRender("categorias")} className={`${tabRender === "categorias" ? "!border-primary text-black bg-primary" : "" } flex flex-nowrap gap-1 items-center border !border-black hover:!border-primary`}><ImImage /> Categorías</button>
-          <button onClick={() => setTabRender("imagenes")} className={`${tabRender === "imagenes" ? "!border-primary text-black bg-primary" : "" } flex flex-nowrap gap-1 items-center border !border-black hover:!border-primary`}><ImImage /> Imagenes</button>
-          <button onClick={() => setTabRender("descuentos")} className={`${tabRender === "descuentos" ? "!border-primary text-black bg-primary" : "" } flex flex-nowrap gap-1 items-center border !border-black hover:!border-primary`}><ImImage /> Descuentos</button>
-          <button onClick={() => setTabRender("productos")} className={`${tabRender === "productos" ? "!border-primary text-black bg-primary" : "" } flex flex-nowrap gap-1 items-center border !border-black hover:!border-primary`}><BiBox /> Productos</button>
-          <button onClick={() => setTabRender("socios")} className={`${tabRender === "socios" ? "!border-primary text-black bg-primary" : "" } flex flex-nowrap gap-1 items-center border !border-black hover:!border-primary`}><BiUser /> Membresias</button>
+          {opciones.map((opcion, index) => 
+            <button key={index} onClick={() => setTabRender(opcion.nombre)} className={`${tabRender === opcion.nombre ? "!border-primary text-black bg-primary capitalize" : "" } flex flex-nowrap gap-1 items-center border !border-black hover:!border-primary capitalize`}>{opcion.icono} {opcion.nombre}</button>
+          )}          
+         
         </div>
         <div className='w-full max-w-7xl mx-auto pt-4'>
           {tabRender === "categorias" && <AdminCategorias /> }

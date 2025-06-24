@@ -9,6 +9,7 @@ export const fetchProductos = async () => {
   }
 };
 
+
 export const fetchCategorias = async () => {
   try {
     const { data } = await axios.get(`${import.meta.env.VITE_BACK}/productos/categorias/`);

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function DeleteImagen({ id_imagen, getImagenes }) {
   async function handleDelete() {
@@ -7,11 +8,12 @@ export default function DeleteImagen({ id_imagen, getImagenes }) {
         `${import.meta.env.VITE_BACK}/productos/imagenes/${id_imagen}`
       );
       if (data.status === 200) {
-        alert("Imagen eliminada con éxito");
+        toast.success(data?.message || "Imagen eliminada con éxito");
         getImagenes();
-      } else alert("Error al eliminar imagen");
+      } else toast.error(data?.message || "Error al eliminar imagen");
     } catch (error) {
       console.log(error);
+      toast.error("Hubo un error");
     }
   }
   return (

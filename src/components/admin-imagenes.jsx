@@ -23,7 +23,6 @@ export const AdminImagenes = () => {
     setImagenesPatch(initialValues)
   }
 
-  console.log(imagenes);
   useEffect(() => {
     fetchImagenesAction()
   }, [])
