@@ -10,7 +10,7 @@ export default function FormDescuentos({descuentosPatch, getDescuentos, handleCl
       porcentaje: e.target.porcentaje.value,
       motivo: e.target.motivo.value
     }
-    console.log(descuento);
+
     try {
       if(descuento.id_descuento === 0) {
         // creo descuento

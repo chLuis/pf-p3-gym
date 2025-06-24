@@ -47,7 +47,7 @@ export default function FormCategoria({categoriaPatch, getCategorias, handleClea
       formRef.current.nombre.value = ""
     }
   }, [categoriaPatch])
-console.log(categoriaPatch);
+
 
   return (
     <form ref={formRef} onSubmit={handleSubbmit} className='flex flex-col gap-2 border rounded-md p-4'>
