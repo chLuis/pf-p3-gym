@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import MemberSearch from "./member-search";
+import LogoutButton from "./logoutButton";
 
 export const Navbar = () => {
   const pages = ["productos", "contacto", "nosotros", "admin"];
@@ -12,6 +13,7 @@ export const Navbar = () => {
       </Link>
 
       <div className="flex gap-4 text-xl items-center">
+        <LogoutButton/>
         {pages.map((page, index) => (
           <Link
             className="!text-primary !font-bold relative group capitalize"
