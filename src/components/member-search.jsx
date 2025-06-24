@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BiUser } from "react-icons/bi";
 import { LuX } from "react-icons/lu";
-import { SOCIOS } from "../lib/socios";
+import axios from "axios";
 
 export default function MemberSearch() {
   const [memberModal, setMemberModal] = useState(false);
@@ -11,8 +11,8 @@ export default function MemberSearch() {
     nombre: "",
     apellido: "",
     dni: "",
-    plan: "",
-    vencimiento: "",
+    nombre_plan: "",
+    socio_hasta: "",
   });
 
   const handleMember = () => {
@@ -23,17 +23,17 @@ export default function MemberSearch() {
     setShowMember(false);
   }
 
-  const handleSearchMember = () => {
-    const member = SOCIOS.find(socio => socio.dni === searchMember)
-    console.log(member);
-    if(!member)
+  const handleSearchMember = async () => {
+    const {data} = await axios.get(`${import.meta.env.VITE_BACK}/socios/${searchMember}`)
+    
+    if(data.data.length === 0)
       return alert("No se encontró el socio");
-    setMember(member)
+    setMember(data.data[0])
     setShowMember(true)
   }
 
   return (
-    <div>
+    <div className="z-50 font-medium">
       <div
         className="!text-primary hover:!text-black hover:bg-primary border px-2 py-2 !font-bold relative group capitalize cursor-pointer duration-200"
         onClick={handleMember}
@@ -60,13 +60,17 @@ export default function MemberSearch() {
                 placeholder="DNI"
                 inputMode="numeric"
                 pattern="[0-9]"
+                required
+                minLength={8}
+                maxLength={8}
                 onChange={(e) => setSearchMember(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearchMember()}  // Para enviar con enter en lugar de clickear el boton
                 className="border-b max-w-32 border-b-primary outline-none"
               />
               <button
                 type="button"
                 onClick={handleSearchMember}
-                className="bg-primary !border-primary text-white px-4 py-2 rounded-md"
+                className="bg-primary !border-primary text-black hover:bg-black hover:text-primary px-4 py-2 rounded-md duration-200"
               >
                 Buscar
               </button>
@@ -76,9 +80,9 @@ export default function MemberSearch() {
                 <BiUser className="min-w-8 mt-2" />
                 <div>
                   <p className="font-semibold">{member?.nombre}</p>
-                  <p className="capitalize">Plan: {member?.plan}</p>
+                  <p className="capitalize">Plan: {member?.nombre_plan}</p>
                   <p className="text-sm">
-                    Tu membresia finaliza el día <strong>{member?.vencimiento}</strong>
+                    Tu membresia finaliza el día <strong>{member?.socio_hasta}</strong>
                   </p>
                 </div>
               </div>

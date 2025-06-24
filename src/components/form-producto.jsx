@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { toast } from 'react-toastify';
 
 export default function FormProducto({ producto }) {
   const formRef = useRef(null);
@@ -25,6 +26,17 @@ export default function FormProducto({ producto }) {
       form.descripcion.value = producto.descripcion || "";
     }
   }, [producto]);
+
+  const handleToast = () => {
+    toast("Producto agregado con éxito", {
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      theme: "dark",
+    });
+  };
+  
 
   console.log(producto);
   return (
@@ -157,8 +169,9 @@ export default function FormProducto({ producto }) {
           className="p-1 border rounded-md placeholder:opacity-50"
         />
       </label>
-      <button type="submit">
-        {producto?.id ? "Editar producto" : "Agregar Producto"}
+      {/* <button type="submit"> */}
+      <button type="button" onClick={handleToast}>
+        {producto?.id ? "Editar producto" : "Agregar Producto22"}
       </button>
     </form>
   );
