@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function DeleteCategoria({ id_categoria, getCategorias }) {
   async function handleDelete() {
@@ -7,11 +8,12 @@ export default function DeleteCategoria({ id_categoria, getCategorias }) {
         `${import.meta.env.VITE_BACK}/productos/categorias/${id_categoria}`
       );
       if (data.status === 200) {
-        alert("Categoria eliminada con éxito");
+        toast.success("Categoria eliminada con éxito");
         getCategorias();
-      } else alert("Error al eliminar categoria");
+      } else toast.error("Error al eliminar categoria");
     } catch (error) {
       console.log(error);
+      toast.error("Hubo un error")
     }
   }
   return (

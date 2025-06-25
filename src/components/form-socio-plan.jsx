@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function FormPlan({id_socio, getSocios, cleanForm}) {
   const [cantidad, setCantidad] = useState(0);
@@ -8,11 +9,11 @@ export default function FormPlan({id_socio, getSocios, cleanForm}) {
     e.preventDefault();
     const {data} = await axios.post(`${import.meta.env.VITE_BACK}/socios/agregar-tiempo`, {id_socio, cantidad})
     if(data.status === 200) {
-      alert("Tiempo agregado")
+      toast.success("Tiempo agregado")
       getSocios()
       cleanForm()
     }
-    else alert("Error al agregar tiempo")
+    else toast.error("Error al agregar tiempo")
   }
 
 

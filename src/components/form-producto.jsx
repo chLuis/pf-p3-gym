@@ -82,6 +82,7 @@ export default function FormProducto({ productoPut, categorias, imagenes, descue
       <p className="text-center font-semibold">
         {productoPut?.id_producto !== 0 ? "Editar producto" : "Agregar Producto"}
       </p>
+      {productoPut?.nombre && <p className="-my-1 font-semibold text-sm text-primary text-center">{productoPut?.nombre}</p>}
       <label className="flex flex-col">
         <span className="capitalize">nombre</span>
         <input

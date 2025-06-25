@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function DeleteDescuento({ id_descuento, getDescuentos }) {
   async function handleDelete() {
@@ -7,11 +8,12 @@ export default function DeleteDescuento({ id_descuento, getDescuentos }) {
         `${import.meta.env.VITE_BACK}/productos/descuentos/${id_descuento}`
       );
       if (data.status === 200) {
-        alert("Descuento eliminado con éxito");
+        toast.success("Descuento eliminado con éxito");
         getDescuentos();
-      } else alert("Error al eliminar descuento");
+      } else toast.error("Error al eliminar descuento");
     } catch (error) {
       console.log(error);
+      toast.error("Hubo un error");
     }
   }
   return (

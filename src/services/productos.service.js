@@ -27,7 +27,6 @@ export const fetchProductoUnico = async (id) => {
 export const fetchCategorias = async () => {
   try {
     const { data } = await axios.get(`${import.meta.env.VITE_BACK}/productos/categorias/`);
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

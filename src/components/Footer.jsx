@@ -9,34 +9,34 @@ export const Footer = () => {
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div className="md:flex md:justify-between">
                 <div className="mb-6 md:mb-0">
-                    <Link to={"/"} className="flex items-center">
+                    <Link to={"/"} className="flex items-center !text-white font-rubik-dirt">
                         <img src="/logo.webp" className="h-8 me-3 rounded-full" alt="Powerhouse Logo" />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap ">Powerhouse</span>
                     </Link>
                 </div>
                 <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                     <div>
-                        <h2 className="mb-6 text-sm font-semibold text-white uppercase ">Nuestros productos</h2>
+                        <h2 className="mb-6 text-sm font-semibold text-white uppercase font-rubik-dirt">Nuestros productos</h2>
                         <ul className="text-gray-500 font-medium">
                             <li className="mb-4">
-                                <Link to={"/productos"} className="hover:underline">Productos</Link>
+                                <Link to={"/productos"} className="hover:underline !text-white hover:!text-primary">Productos</Link>
                             </li>
                         </ul>
                     </div>
                     <div>
-                        <h2 className="mb-6 text-sm font-semibold text-white uppercase">Conocenos</h2>
+                        <h2 className="mb-6 text-sm font-semibold text-white uppercase font-rubik-dirt">Conocenos</h2>
                         <ul className="text-gray-500 font-medium">
                             <li className="mb-4">
-                                <Link to={"/nosotros"} className="hover:underline ">Nosotros</Link>
+                                <Link to={"/nosotros"} className="hover:underline !text-white hover:!text-primary">Nosotros</Link>
                             </li>
                             <li>
-                                <Link to={"/contacto"} className="hover:underline">Contacto</Link>
+                                <Link to={"/contacto"} className="hover:underline !text-white hover:!text-primary">Contacto</Link>
                             </li>
                         </ul>
                     </div>
                     <div className="w-fit">
-                        <h2 className="mb-6 text-sm font-semibold text-white uppercase ">Socios</h2>
-                        <ul className="text-gray-500 font-medium">
+                        <h2 className="mb-6 text-sm font-semibold text-white uppercase font-rubik-dirt">Socios</h2>
+                        <ul className="text-gray-500 ">
                             <li className="mb-4">
                                 <MemberSearch />
                             </li>

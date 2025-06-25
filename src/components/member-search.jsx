@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BiUser } from "react-icons/bi";
 import { LuX } from "react-icons/lu";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function MemberSearch() {
   const [memberModal, setMemberModal] = useState(false);
@@ -26,9 +27,11 @@ export default function MemberSearch() {
   const handleSearchMember = async () => {
     const {data} = await axios.get(`${import.meta.env.VITE_BACK}/socios/${searchMember}`)
     
-    if(data.data.length === 0)
-      return alert("No se encontró el socio");
-    setMember(data.data[0])
+    if(data.data.length === 0) {
+      setShowMember(false);
+      return toast.error("No se encontró el socio");
+    }
+      setMember(data.data[0])
     setShowMember(true)
   }
 

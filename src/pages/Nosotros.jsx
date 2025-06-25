@@ -1,5 +1,3 @@
-// src/pages/Nosotros.jsx
-import React from "react";
 import "./nosotros.css"
 
 export const Nosotros = () => {
@@ -8,7 +6,7 @@ export const Nosotros = () => {
       <div className="max-w-5xl mx-auto space-y-8">
         {/* Título principal */}
         <div className="text-center">
-          <h1 className=" titulo-noso">Sobre Nosotros</h1>
+          <h1 className=" titulo-noso font-rubik-dirt">Sobre Nosotros</h1>
         </div>
 
         <div className="imagen-nosotros"> 
