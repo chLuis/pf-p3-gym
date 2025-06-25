@@ -24,7 +24,6 @@ export const AdminDescuentos = () => {
     setDescuentosPatch(initialValues)
   }
 
-  console.log(descuentos);
   useEffect(() => {
     fetchDescuentosAction()
   }, [])
@@ -57,7 +56,7 @@ export const AdminDescuentos = () => {
                 <td className="capitalize px-2 w-24">{descuento.porcentaje}</td>
                 <td className="capitalize px-2 flex-1">{descuento.motivo}</td>
                 <td className="flex flex-nowrap gap-2 items-center justify-center">
-                  <button onClick={() => setDescuentosPatch(descuento)}>Editar</button>
+                  <button className='text-white bg-blue-700 !p-1 hover:scale-105 duration-200' onClick={() => setDescuentosPatch(descuento)}>Editar</button>
                   <DeleteDescuento id_descuento={descuento.id_descuento} getDescuentos={fetchDescuentosAction} />
                   
                 </td>

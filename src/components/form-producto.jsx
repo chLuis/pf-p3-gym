@@ -1,44 +1,78 @@
+import axios from "axios";
 import { useEffect, useRef } from "react";
 import { toast } from 'react-toastify';
 
-export default function FormProducto({ producto }) {
+export default function FormProducto({ productoPut, categorias, imagenes, descuentos, getProductos, handleClean }) {
   const formRef = useRef(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-    console.log(data);
+    //const formData = new FormData(e.target);
+    const producto = {
+      id_producto: productoPut?.id_producto,
+      nombre: e.target.nombre.value,
+      precio: e.target.precio.value,
+      stock: e.target.stock.value,
+      categoria: e.target.categoria.value,
+      descuento: e.target.descuento.value,
+      imagen: e.target.imagen.value,
+      descripcion: e.target.descripcion.value,
+    }
+    if(producto.categoria === '0') return toast.error('Debe seleccionar una categoria')
+    if(producto.descuento === '0') return toast.error('Debe seleccionar un descuento')
+    if(producto.imagen === '0') return toast.error('Debe seleccionar una imagen')
+    try {
+      //Creacion
+      if(producto.id_producto === 0) {
+        const {data} = await axios.post(`${import.meta.env.VITE_BACK}/productos`, producto)
+
+        if(data.status === 201) {
+          toast.success(data.message || 'Producto agregado con éxito')
+          formRef.current.reset()
+          getProductos()
+          handleClean()
+        } else {
+          toast.error(data?.message || "Error al agregar producto")
+        }
+      } else {
+        // Edicion
+        const {data} = await axios.patch(`${import.meta.env.VITE_BACK}/productos/${producto.id_producto}`, producto)
+
+        if(data.status === 200 && data.data.affectedRows === 1) {
+          toast.success(data.message || 'Producto editado con éxito')
+          formRef.current.reset()
+          getProductos()
+          handleClean()
+        } else {
+          toast.error(data?.message || "Error al editar producto")
+        }
+      }
+    }
+    catch (error) {
+      console.log(error);
+      toast.error('Error en la creacion del producto')
+    }
   };
 
   useEffect(() => {
-    if (!formRef.current) return;
-    formRef.current.reset();
-
-    if (producto) {
-      const form = formRef.current;
-      form.nombre.value = producto.nombre || "";
-      form.precio.value = producto.precio || "";
-      form.stock.value = producto.stock || "";
-      form.categoria.value = producto.categoria || "elegir";
-      form.marca.value = producto.marca || "elegir";
-      form.imagen.value = producto.imagen || "elegir";
-      form.descuento.value = producto.descuento || "";
-      form.descripcion.value = producto.descripcion || "";
+    if (productoPut?.id_producto !== 0) {
+      formRef.current.nombre.value = productoPut.nombre;
+      formRef.current.precio.value = productoPut.precio;
+      formRef.current.stock.value = productoPut.stock;
+      formRef.current.categoria.value = productoPut.id_categoria;
+      formRef.current.descuento.value = productoPut.id_descuento;
+      formRef.current.imagen.value = productoPut.id_imagen;
+      formRef.current.descripcion.value = productoPut.descripcion;
+    } else {
+      formRef.current.nombre.value = "";
+      formRef.current.precio.value = null;
+      formRef.current.stock.value = null;
+      formRef.current.categoria.value = 0;
+      formRef.current.descuento.value = 0;
+      formRef.current.imagen.value = 0;
+      formRef.current.descripcion.value = "";
     }
-  }, [producto]);
+  }, [productoPut]);
 
-  const handleToast = () => {
-    toast("Producto agregado con éxito", {
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      theme: "dark",
-    });
-  };
-  
-
-  console.log(producto);
   return (
     <form
       ref={formRef}
@@ -46,7 +80,7 @@ export default function FormProducto({ producto }) {
       className="flex flex-col gap-2 border min-w-[264px] max-w-full rounded-md h-fit p-4"
     >
       <p className="text-center font-semibold">
-        {producto?.id ? "Editar producto" : "Agregar Producto"}
+        {productoPut?.id_producto !== 0 ? "Editar producto" : "Agregar Producto"}
       </p>
       <label className="flex flex-col">
         <span className="capitalize">nombre</span>
@@ -55,7 +89,6 @@ export default function FormProducto({ producto }) {
           required
           name="nombre"
           placeholder="nombre"
-          id="imagen"
           className="p-1 border rounded-md placeholder:opacity-50"
         />
       </label>
@@ -66,11 +99,10 @@ export default function FormProducto({ producto }) {
           required
           name="precio"
           placeholder="precio"
-          id="imagen"
           className="p-1 border rounded-md placeholder:opacity-50"
         />
       </label>
-      <div className="grid grid-cols-2 gap-2">
+
         <label className="flex flex-col">
           <span className="capitalize">stock</span>
           <input
@@ -78,90 +110,65 @@ export default function FormProducto({ producto }) {
             required
             name="stock"
             placeholder="stock"
-            id="imagen"
+
             className="p-1 border rounded-md placeholder:opacity-50"
           />
         </label>
-        <label className="flex flex-col">
-          <span className="capitalize">descuento</span>
-          <input
-            type="number"
-            name="descuento"
-            id="descuento"
-            placeholder=""
-            className="p-1 border rounded-md placeholder:opacity-50"
-          />
-        </label>
-      </div>
+
       <label className="flex flex-col">
         <span className="capitalize">categoria</span>
         <select
           name="categoria"
           id="categoria"
-          className="p-1 border rounded-md placeholder:opacity-50"
+          className="p-1 border rounded-md placeholder:opacity-50 capitalize"
         >
-          <option value="elegir" disabled className="text-black">
+          <option value={0} className="text-black">
             Elegir
           </option>
-          <option value="toallas" className="text-black">
-            Toallas
-          </option>
-          <option value="mancuernas" className="text-black">
-            Mancuernas
-          </option>
-          <option value="proteinas" className="text-black">
-            Proteinas
-          </option>
-          <option value="accesorios" className="text-black">
-            Accesorios
-          </option>
-          <option value="guantes" className="text-black">
-            Guantes
-          </option>
+          {categorias?.map((categoria, index) => 
+            <option key={index} value={categoria.id_categoria} className="text-black capitalize">
+              {categoria.nombre}
+            </option>
+          
+          )}
+          
         </select>
       </label>
       <label className="flex flex-col">
-        <span className="capitalize">marca</span>
+        <span className="capitalize">Descuento</span>
         <select
-          name="marca"
-          id="marca"
+          name="descuento"
+          id="descuento"
           className="p-1 border rounded-md placeholder:opacity-50"
         >
-          <option value="elegir" disabled className="text-black">
+          <option value={0} className="text-black">
             Elegir
           </option>
-          <option value="nike" className="text-black">
-            Nike
-          </option>
-          <option value="adidas" className="text-black">
-            Adidas
-          </option>
-          <option value="puma" className="text-black">
-            Puma
-          </option>
+          {descuentos?.map((descuento, index) => 
+            <option key={index} value={descuento.id_descuento} className="text-black">
+              {descuento.porcentaje}% - {descuento.motivo}
+            </option>
+          )}
         </select>
       </label>
       <label className="flex flex-col">
         <span className="capitalize">imagen</span>
-        <select name="imagen" id="imagen" className="p-1 border rounded-md">
-          <option value="elegir" disabled className="text-black">
+        <select name="imagen" className="p-1 border rounded-md capitalize">
+          <option value={0} className="text-black">
             Elegir
           </option>
-          <option value="img1" className="text-black">
-            img1
-          </option>
-          <option value="img2" className="text-black">
-            img2
-          </option>
-          <option value="img3" className="text-black">
-            img3
-          </option>
+          {imagenes?.map((imagen, index) => 
+            <option key={index} value={imagen.id_imagen} className="text-black capitalize">
+              {imagen.id_imagen}{imagen.nombre}
+            </option>
+          )}
         </select>
       </label>
 
       <label className="flex flex-col">
         <span className="capitalize">descripcion</span>
         <textarea
+          required
           name="descripcion"
           id="descripcion"
           rows={4}
@@ -169,9 +176,8 @@ export default function FormProducto({ producto }) {
           className="p-1 border rounded-md placeholder:opacity-50"
         />
       </label>
-      {/* <button type="submit"> */}
-      <button type="button" onClick={handleToast}>
-        {producto?.id ? "Editar producto" : "Agregar Producto22"}
+      <button type="submit">
+        {productoPut?.id_producto !== 0  ? "Editar producto" : "Agregar Producto"}
       </button>
     </form>
   );
