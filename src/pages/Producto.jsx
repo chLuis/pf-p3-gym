@@ -1,16 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 // import { PRODUCTOS_CONST } from "../lib/productos";
 import { useEffect, useState } from "react";
 // import axios from "axios";
-import { fetchProductoUnico } from "../services/productos.service";
+import { fetchProductosRelacionados, fetchProductoUnico } from "../services/productos.service";
 
 export const Producto = () => {
   const { id } = useParams();
- 
-  // const producto = PRODUCTOS_CONST.find(p => p.id === parseInt(id));
-  // const navigate = useNavigate();
 
   const [producto, setProducto] = useState([])
+  const [relacionados, setRelacionados] = useState([])
   // const [cargar, setCargar] = useState(true)
   // const [error, setError] = useState()
 
@@ -42,8 +40,24 @@ export const Producto = () => {
 
   useEffect(() => {
     fetchProductoUnicoAction(id)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+
+  }, [id])
+
+  useEffect(() => {
+    if (producto.id_categoria) {
+      const fetchRelacionados = async () => {
+        try {
+          console.log(producto);
+          const data = await fetchProductosRelacionados(producto.id_categoria)
+          setRelacionados(data.filter(prod=>prod.id_producto !== producto.id_producto))
+        } catch (error) {
+          console.error("Error al traer productos relacionados", error)
+        }
+      }
+
+      fetchRelacionados()
+    }
+  }, [producto])
 
   return (
     <>
@@ -70,12 +84,43 @@ export const Producto = () => {
             Enviar por WhatsApp
           </a>
 
-         <a href="/carrito">carrito</a>
+          <a href="/carrito">carrito</a>
         </div>
-     
+
       </div>
 
       {/* Productos relacionados como cards oscuras */}
+
+      <div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Productos relacionados</h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {relacionados.map(p => (
+              <Link
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                to={`/productos/${p.id_producto}`}
+                key={p.id_producto}
+                className="bg-black text-yellow-400 rounded-xl shadow-md overflow-hidden transition transform hover:scale-105 hover:shadow-lg hover:border-yellow-400 border cursor-pointer"
+              >
+                <img
+                  src={p.url}
+                  alt={p.nombre}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold">{p.nombre}</h3>
+                  <p className="mt-1">Precio: ${p.precio}</p>
+                </div>
+              </Link>
+            ))}
+
+            {relacionados.length === 0 && (
+              <p className="text-center col-span-full text-gray-500">No hay productos relacionados.</p>
+            )}
+          </div>
+        </div>
+
+
       {/* <div>
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Productos relacionados</h2>
 
