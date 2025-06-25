@@ -9,6 +9,15 @@ export const fetchProductos = async () => {
   }
 };
 
+export const fetchProductoUnico = async (id) => {
+  try {
+    const { data } = await axios.get(`${import.meta.env.VITE_BACK}/productos/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 export const fetchCategorias = async () => {
   try {

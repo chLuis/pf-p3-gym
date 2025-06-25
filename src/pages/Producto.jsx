@@ -1,18 +1,48 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { PRODUCTOS_CONST } from "../lib/productos";
+import { useParams } from "react-router-dom";
+// import { PRODUCTOS_CONST } from "../lib/productos";
+import { useEffect, useState } from "react";
+// import axios from "axios";
+import { fetchProductoUnico } from "../services/productos.service";
 
 export const Producto = () => {
   const { id } = useParams();
-  const producto = PRODUCTOS_CONST.find(p => p.id === parseInt(id));
-  const navigate = useNavigate();
+  // const producto = PRODUCTOS_CONST.find(p => p.id === parseInt(id));
+  // const navigate = useNavigate();
 
-  if (!producto) {
-    return <div className="text-center text-red-500 text-xl">Producto no encontrado</div>;
+  const [producto, setProducto] = useState([])
+  // const [cargar, setCargar] = useState(true)
+  // const [error, setError] = useState()
+
+  // useEffect(() => {
+  //   const fetchProducto = async () => {
+  //     try {
+  //       const response = await axios.get(`${import.meta.env.VITE_BACK}/productos/${id}`)
+  //       console.log(response);
+  //       setProducto(response.data)
+  //     } catch (err) {
+  //       console.error("Error al traer el producto:", err)
+  //       setError("Producto no encontrado")
+  //     } finally {
+  //       setCargar(false)
+  //     }
+  //   }
+
+  //   fetchProducto()
+  // }, [id])
+
+  const fetchProductoUnicoAction = async (id) => {
+    try {
+      const data = await fetchProductoUnico(id)
+      setProducto(data)
+    } catch (error) {
+      console.error("Error", error)
+    }
   }
 
-  const relacionados = PRODUCTOS_CONST.filter(
-    p => p.categoria === producto.categoria && p.id !== producto.id
-  );
+  useEffect(() => {
+    fetchProductoUnicoAction(id)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
@@ -20,9 +50,9 @@ export const Producto = () => {
       {/* Detalle del producto */}
       <div className="bg-black rounded-xl shadow-md p-6">
         <img
-          src={producto.imagen}
+          src={producto.url}
           alt={producto.nombre}
-          className="w-full h-64 object-cover rounded mb-4"
+          className="w-full object-cover rounded mb-4"
         />
         <h1 className="text-3xl text-primary font-bold mb-2">{producto.nombre}</h1>
         <p className="text-lg text-primary mb-1">💰 Precio: ${producto.precio}</p>
@@ -45,7 +75,7 @@ export const Producto = () => {
       </div>
 
       {/* Productos relacionados como cards oscuras */}
-      <div>
+      {/* <div>
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Productos relacionados</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -71,7 +101,7 @@ export const Producto = () => {
             <p className="text-center col-span-full text-gray-500">No hay productos relacionados.</p>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
     </>
   );
