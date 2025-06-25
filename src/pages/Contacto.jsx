@@ -8,7 +8,7 @@ export const Contacto = () => {
     >
       <div className="bg-transparente bg-opacity-80 max-w-xl mx-auto p-8 rounded-lg shadow-md">
         <div className="mb-8 text-center">
-          <h1 className="contac-cambio text-3xl font-bold mb-2">CONTACTO</h1>
+          <h1 className="contac-cambio text-3xl font-bold mb-2 font-rubik-dirt">CONTACTO</h1>
           <h2 className="contac-cambio ">
             Para consultas, completá el siguiente formulario:
           </h2>
@@ -65,7 +65,7 @@ export const Contacto = () => {
 
           <button
             type="submit"
-            className="bg-blue-500 text-black py-2 px-4 rounded hover:bg-blue-600"
+            className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
           >
             Enviar
           </button>
