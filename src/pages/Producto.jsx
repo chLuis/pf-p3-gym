@@ -6,6 +6,7 @@ import { fetchProductoUnico } from "../services/productos.service";
 
 export const Producto = () => {
   const { id } = useParams();
+ 
   // const producto = PRODUCTOS_CONST.find(p => p.id === parseInt(id));
   // const navigate = useNavigate();
 
