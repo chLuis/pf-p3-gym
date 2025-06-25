@@ -1,8 +1,10 @@
 import axios from "axios"
 import { useEffect, useRef } from "react"
+import { toast } from "react-toastify"
 
 export default function FormDescuentos({descuentosPatch, getDescuentos, handleClean}) {
   const formRef = useRef(null)
+
   const handleSubbmit = async (e) => {
     e.preventDefault()
     const descuento = {
@@ -10,28 +12,27 @@ export default function FormDescuentos({descuentosPatch, getDescuentos, handleCl
       porcentaje: e.target.porcentaje.value,
       motivo: e.target.motivo.value
     }
-
     try {
       if(descuento.id_descuento === 0) {
         // creo descuento
         const {data} = await axios.post(`${import.meta.env.VITE_BACK}/productos/descuentos`, descuento)
         if(data.status === 201) {
-          alert(data?.message || "Descuento creado")
+          toast.success(data?.message || "Descuento creado")
           formRef.current.reset()
           getDescuentos()
         } else {
-          alert(data?.message || "Error al crear descuento")
+          toast.error(data?.message || "Error al crear descuento")
         }
       } else {
         // edito descuento
         const {data} = await axios.patch(`${import.meta.env.VITE_BACK}/productos/descuentos/${descuento.id_descuento}`, descuento)
         if(data.status === 200) {
-          alert(data?.message || "Descuento editado")
+          toast.success(data?.message || "Descuento editado")
           formRef.current.reset()
           getDescuentos()
           handleClean()
         } else {
-          alert(data?.message || "Error al editar descuento")
+          toast.error(data?.message || "Error al editar descuento")
         }
       }
     } catch (error) {
@@ -53,10 +54,17 @@ export default function FormDescuentos({descuentosPatch, getDescuentos, handleCl
 
   return (
     <form ref={formRef} onSubmit={handleSubbmit} className='flex flex-col gap-2 border rounded-md p-4'>
-        <p>{descuentosPatch?.motivo ? "Editar descuento" : "Agregar descuento"}</p>
-        <input type="number" max={90} defaultValue={descuentosPatch?.porcentaje} name="porcentaje" id="porcentaje" className='p-2 border rounded-md placeholder:opacity-50' />
-        <input type="text" defaultValue={descuentosPatch?.motivo} name="motivo" id="motivo" className='p-2 border rounded-md placeholder:opacity-50' />
-        <button className="" type="submit">{descuentosPatch?.motivo ? "Editar descuento" : "Agregar descuento"}</button>
+        <p className="text-center font-semibold">{descuentosPatch?.motivo ? `Editar descuento` : "Agregar descuento"}</p>
+        {descuentosPatch?.motivo && <p className="-my-1 font-semibold text-sm text-primary text-center">{descuentosPatch?.motivo}</p>}
+        <label>
+          <span>Porcentaje</span>
+          <input type="number" max={90} defaultValue={descuentosPatch?.porcentaje} name="porcentaje" id="porcentaje" className='p-2 border rounded-md placeholder:opacity-50' />
+        </label>
+        <label>
+          <span>Motivo</span>
+          <input type="text" defaultValue={descuentosPatch?.motivo} name="motivo" id="motivo" className='p-2 border rounded-md placeholder:opacity-50' />
+        </label>
+        <button className="mt-2" type="submit">{descuentosPatch?.motivo ? "Editar descuento" : "Agregar descuento"}</button>
       </form>
   )
 }

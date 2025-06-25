@@ -58,10 +58,17 @@ export default function FormImagenes({imagenesPatch, getImagenes, handleClean}) 
 
   return (
     <form ref={formRef} onSubmit={handleSubbmit} className='flex flex-col gap-2 border rounded-md p-4'>
-      <p>{imagenesPatch?.nombre ? "Editar imagen" : "Agregar imagen"}</p>
-      <input type="text" name="nombre" id="nombre" className='p-2 border rounded-md placeholder:opacity-50' />
-      <input type="text" name="url" id="url" className='p-2 border rounded-md placeholder:opacity-50' />
-      <button className="" type="submit">{imagenesPatch?.nombre ? "Editar imagen" : "Agregar imagen"}</button>
+      <p className="text-center font-semibold">{imagenesPatch?.nombre ? "Editar imagen" : "Agregar imagen"}</p>
+      {imagenesPatch?.nombre && <p className="-my-1 font-semibold text-sm text-primary text-center">{imagenesPatch?.nombre}</p>}
+      <label>
+        <span>Nombre</span>
+        <input type="text" name="nombre" id="nombre" className='p-2 border rounded-md placeholder:opacity-50' />
+      </label>
+      <label>
+        <span>URL</span>
+        <input type="text" name="url" id="url" className='p-2 border rounded-md placeholder:opacity-50' />
+      </label>
+      <button className="mt-2" type="submit">{imagenesPatch?.nombre ? "Editar imagen" : "Agregar imagen"}</button>
     </form>
   )
 }

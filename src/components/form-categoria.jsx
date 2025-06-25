@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useRef } from "react"
+import { toast } from "react-toastify"
 
 export default function FormCategoria({categoriaPatch, getCategorias, handleClean}) {
   const formRef = useRef(null)
@@ -14,23 +15,23 @@ export default function FormCategoria({categoriaPatch, getCategorias, handleClea
         // creo categoria
         const {data} = await axios.post(`${import.meta.env.VITE_BACK}/productos/categorias`, categoria)
         if(data.status === 201) {
-          alert(data?.message || "Categoria creada")
+          toast.success(data?.message || "Categoria creada")
           formRef.current.reset()
           getCategorias()
         } else {
-          alert(data?.message || "Error al crear categoria")
+          toast.error(data?.message || "Error al crear categoria")
         }
       } else {
         // edito categoria
         const {data} = await axios.patch(`${import.meta.env.VITE_BACK}/productos/categorias/${categoria.id_categoria}`, categoria)
         console.log(data);
         if(data.status === 200) {
-          alert(data?.message || "Categoria editada")
+          toast.success(data?.message || "Categoria editada")
           formRef.current.reset()
           getCategorias()
           handleClean()
         } else {
-          alert(data?.message || "Error al editar categoria")
+          toast.error(data?.message || "Error al editar categoria")
         }
       }
     } catch (error) {
@@ -51,9 +52,13 @@ export default function FormCategoria({categoriaPatch, getCategorias, handleClea
 
   return (
     <form ref={formRef} onSubmit={handleSubbmit} className='flex flex-col gap-2 border rounded-md p-4'>
-        <p>{categoriaPatch?.nombre ? "Editar categoria" : "Agregar categoria"}</p>
-        <input type="text" defaultValue={categoriaPatch?.nombre} name="nombre" id="nombre" className='p-2 border rounded-md placeholder:opacity-50' />
-        <button className="" type="submit">{categoriaPatch?.nombre ? "Editar categoria" : "Agregar categoria"}</button>
+        <p className="text-center font-semibold">{categoriaPatch?.nombre ? "Editar categoria" : "Agregar categoria"}</p>
+        {categoriaPatch?.nombre && <p className="-my-1 font-semibold text-sm text-primary text-center">{categoriaPatch?.nombre}</p>}
+        <label>
+          <span>Nombre</span>
+          <input type="text" defaultValue={categoriaPatch?.nombre} name="nombre" id="nombre" className='p-2 border rounded-md placeholder:opacity-50' />
+        </label>
+        <button className="mt-2" type="submit">{categoriaPatch?.nombre ? "Editar categoria" : "Agregar categoria"}</button>
       </form>
   )
 }

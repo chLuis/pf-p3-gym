@@ -52,7 +52,7 @@ export const AdminDescuentos = () => {
             </thead>
             <tbody>
               {descuentos?.map((descuento, index) => 
-              <tr key={index} className={`${index % 2 === 0 ? "bg-black" : ""} flex flex-nowrap hover:bg-primary hover:text-black items-center duration-200 min-w-fit`}>
+              <tr key={index} className={`${index % 2 === 0 ? "bg-black" : ""} py-1 flex flex-nowrap hover:bg-primary hover:text-black items-center duration-200 min-w-fit`}>
                 <td className="capitalize px-2 w-24">{descuento.porcentaje}</td>
                 <td className="capitalize px-2 flex-1">{descuento.motivo}</td>
                 <td className="flex flex-nowrap gap-2 items-center justify-center">

@@ -61,7 +61,7 @@ export const AdminCategorias = () => {
                   key={index}
                   className={`${
                     index % 2 === 0 ? "bg-black" : ""
-                  } grid grid-cols-2 hover:bg-primary hover:text-black items-center duration-200 min-w-fit`}
+                  } grid grid-cols-2 hover:bg-primary hover:text-black items-center duration-200 min-w-fit py-1`}
                 >
                   <td className="capitalize px-2">{categoria.nombre}</td>
                   <td className="flex flex-nowrap gap-2 items-center justify-center">

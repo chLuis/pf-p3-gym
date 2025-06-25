@@ -6,10 +6,10 @@ export const Navbar = () => {
   const pages = ["productos", "contacto", "nosotros", "admin"];
 
   return (
-    <div className="flex gap-2 items-center justify-between px-4 py-1 w-full border-b font-anton border-b-primary">
+    <div className="flex gap-2 items-center justify-between px-4 py-1 w-full border-b font-rubik-dirt border-b-primary">
       <Link to="/" className="flex flex-nowrap gap-1 p-1 items-center">
-        <img src="/logo.webp" alt="logo" className="rounded-full aspect-square w-20" />
-        <span className="text-4xl font-semibold text-primary font-anton">POWERHOUSE</span>
+        <img src="/logo.webp" alt="logo" className="rounded-full aspect-square w-16" />
+        <span className="text-4xl font-semibold text-primary font-rubik-dirt">POWERHOUSE</span>
       </Link>
 
       <div className="flex gap-4 text-xl items-center">

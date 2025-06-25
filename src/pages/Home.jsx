@@ -4,10 +4,26 @@ export const Home = () => {
   //AGUSTIN
   return (
     <>
-      <div> {/*Caja para poner la imagen de portada. ocupa todo el ancho y 120 de altura */}
-        <img src="/home.png" alt="Home" className="w-full h-120"/>
+      <div className="max-h-[80dvh] h-[80dvh] relative flex flex-col justify-start pt-24 sm:justify-center sm:pt-0 gap-2 bg-[url('/home.jpg')] bg-cover bg-bottom"> 
+        {/* <img src="/home.webp" alt="Home" className="absolute inset-0 w-full h-auto object-contain"/> */}
+          <div className="flex flex-col px-4 mx-auto sm:mx-0 text-4xl sm:text-6xl lg:text-[90px] font-rubik-dirt min-w-0 w-fit bg-gradient-to-r from-primary/70 to-primary/10 rounded-sm">
+            <div>POWERHOUSE</div>
+            <div className="text-center text-black">GYM</div>
+          </div>
+          <div className="text-center sm:text-start sm:text-xl md:text-2xl max-w-[600px] px-4 py-2 font-anton">
+            La mejor sede de gimnasios de Tucumán, aquí te acompañarán los mejores profesionales deportivos y médicos para cuidarte. No esperes más para empezar.
+          </div>
+          <div className="flex flex-col sm:flex-row items-center gap-2 overflow-clip px-2">
+          
+            <div className="bg-primary/50 w-fit p-2 !text-2xl font-rubik-dirt -skew-x-12">
+              <div className="skew-x-12">Llamanos ahora</div>
+            </div>
+            <a href="tel:3811625520" target="_blank" className="group hover:bg-primary bg-primary/30 !text-white w-fit p-2 !text-2xl font-rubik-dirt -skew-x-12 duration-200">
+              <div className="group-hover:text-black skew-x-12">381-162-5520</div>
+            </a>
+          </div>
       </div>
-      <div className="flex h-screen"> {/*Caja para dividir la pantalla */}
+      <div className="flex font-rubik"> {/*Caja para dividir la pantalla */}
         <aside className="w-1/2 bg-gray-800 text-white p-6"> {/*Aside ocupa el 50% de la pantalla al lado izquierdo */}
           <h1 className="text-3xl font-bold text-yellow-600 mb-6">Titulo</h1>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur aperiam voluptatem laudantium, praesentium, ut, illo culpa repellendus vel nemo quasi esse soluta eligendi blanditiis vitae perspiciatis! Ipsum ea aliquam ullam.</p>
@@ -63,7 +79,7 @@ export const Home = () => {
         </section>
       </div>
       <section id="planes" className="bg-primary text-black py-16 px-6"> {/*Hasta aqui scrollea la pagina al hacer click en el boton de conocer los planes*/}
-        <h2 className="text-black font-extrabold text-3xl text-center mb-20">Conoce nuestros planes</h2>
+        <h2 className="text-black font-extrabold text-3xl sm:text-6xl text-center mb-12 font-rubik-dirt">Conoce nuestros planes</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto"> {/*Creamos 3 cards con el contenido de cada plan */}
           {/*Card 1 */}
           <div className="bg-amber-100 p-10 rounded-xl shadow-md text-center">

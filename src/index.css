@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Indie+Flower&family=Lexend:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Indie+Flower&family=Lexend:wght@100..900&family=Rubik+Dirt&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -27,6 +27,7 @@
   --font-lexend: "Lexend";
   --font-indie: "Indie Flower";
   --font-rubik: "Rubik";
+  --font-rubik-dirt: "Rubik Dirt";
 
   @keyframes toaster-show {
     0% {

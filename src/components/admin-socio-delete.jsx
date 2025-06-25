@@ -1,17 +1,19 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function DeleteSocio({id_socio, getSocios}) {
   async function handleDelete(id_socio) {
     try {
         const {data} = await axios.delete(`${import.meta.env.VITE_BACK}/socios/${id_socio}`)
         if (data.status === 200) {
-          alert("Socio eliminado con éxito")
+          toast.success("Socio eliminado con éxito")
           getSocios()
         }
         else
-          alert("Error al eliminar socio")
+          toast.error("Error al eliminar socio")
       } catch (error) {
         console.log(error);
+        toast.error("Hubo un error")
       }
     }
   return (
