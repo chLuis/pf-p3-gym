@@ -1,5 +1,10 @@
 import axios from "axios";
 
+export const fetchProductosRelacionados = async (categoriaId) => {
+  const response = await axios.get(`${import.meta.env.VITE_BACK}/productos/relacionados/${categoriaId}`)
+  return response.data
+}
+
 export const fetchProductos = async () => {
   try {
     const { data } = await axios.get(`${import.meta.env.VITE_BACK}/productos/`);
