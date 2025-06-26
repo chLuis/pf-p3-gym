@@ -46,10 +46,10 @@ export default function MemberSearch() {
   }
 
   return (
-    <div className="z-50 font-medium">
+    <div className="font-medium">
     {/* Boton que hará aparecer el modal para buscar estado del socio */}
       <div
-        className="!text-primary hover:!text-black !rounded-md hover:bg-primary border px-2 py-2 !font-bold relative group capitalize cursor-pointer duration-200"
+        className="!text-primary font-rubik-dirt hover:!text-black !rounded-md hover:bg-primary border px-2 py-2 relative group capitalize cursor-pointer duration-200"
         onClick={() => setMemberModal(true)}
       >
         Socios
@@ -58,7 +58,7 @@ export default function MemberSearch() {
       {memberModal && (
         <div
           onClick={handleCloseModal}
-          className="fixed inset-0 flex justify-center items-center bg-black/50 backdrop-blur-md text-primary"
+          className="fixed inset-0 flex z-50 justify-center items-center bg-black/50 backdrop-blur-md text-primary"
         >
           <div
             onClick={(e) => e.stopPropagation()}
@@ -68,7 +68,7 @@ export default function MemberSearch() {
               onClick={handleCloseModal}
               className="absolute top-2 right-2 cursor-pointer"
             />
-            <p className="text-center text-2xl pb-6">Socios</p>
+            <p className="text-center text-2xl pb-6 font-rubik-dirt">Socios</p>
             <div className="flex flex-nowrap gap-4 items-center justify-center">
               <input
                 type="text"
@@ -80,23 +80,23 @@ export default function MemberSearch() {
                 maxLength={8}
                 onChange={(e) => setSearchMember(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSearchMember()}  // Para enviar con enter en lugar de clickear el boton
-                className="border-b max-w-32 border-b-primary outline-none"
+                className="border-b max-w-32 border-b-primary outline-none !font-rubik-dirt"
               />
               <button
                 type="button"
                 onClick={handleSearchMember}
-                className="bg-primary !border-primary text-black hover:bg-black hover:text-primary px-4 py-2 rounded-md duration-200"
+                className="!bg-primary !border-primary !text-black hover:!bg-black hover:!text-primary px-4 py-2 rounded-md !font-rubik-dirt duration-200"
               >
                 Buscar
               </button>
             </div>
             {/* Aqui se muestran los datos del socio que se encontró */}
             {showMember && (
-              <div className="flex flex-nowrap gap-1 border rounded-md p-2 mt-6">
+              <div className="flex flex-nowrap gap-1 border rounded-md p-2 mt-6 !font-rubik">
                 <BiUser className="min-w-8 mt-2" />
                 <div>
-                  <p className="font-semibold">{member?.nombre}</p>
-                  <p className="capitalize">Plan: {member?.nombre_plan}</p>
+                  <p className="!font-rubik-dirt uppercase">{member?.nombre}</p>
+                  <p className="!font-rubik-dirt capitalize">Plan: {member?.nombre_plan}</p>
                   <p className="text-sm">
                     Tu membresia finaliza el día <strong>{member?.socio_hasta}</strong>
                   </p>
