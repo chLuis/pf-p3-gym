@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react'
 import { fetchCarrito } from '../services/productos.service'
 import { CgSpinner } from 'react-icons/cg'
+import carritoStore from '../store/storeCarrito'
 
+  // const {carrito, eliminarProducto, vaciarCarrito } = carritoStore()
+  // const carrito = carritoStore(state => state.carrito);
+  // const eliminarProducto = carritoStore(state => state.eliminarProducto);
+  // const vaciarCarrito = carritoStore(state => state.vaciarCarrito);
 
 export const Carrito = () => {
   const [carritoProductos, setCarritoProductos] = useState([])

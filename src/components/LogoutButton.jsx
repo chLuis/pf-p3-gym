@@ -4,7 +4,6 @@ const LogoutButton = () => {
 
     const navigate = useNavigate()
     const user = localStorage.getItem("usuarioPowerhouse")
-    console.log(user);
 
     const handleLogout = () => {
         localStorage.removeItem("usuarioPowerhouse")
