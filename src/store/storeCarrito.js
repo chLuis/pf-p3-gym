@@ -8,12 +8,12 @@ const carritoStore = create(
 
             getCarrito: () => get().carrito,
 
-            agregarProducto: (producto) => {
+            agregarProducto: (id_producto) => {
             const carritoActual = get().carrito;
 
-            const yaExiste = carritoActual.some(p => p === producto);
+            const yaExiste = carritoActual.some(p => p === id_producto);
                 if (!yaExiste) {
-                    set({ carrito: [...carritoActual, producto] });
+                    set({ carrito: [...carritoActual, id_producto] });
                 }
             },
 
@@ -23,12 +23,29 @@ const carritoStore = create(
             },
 
             vaciarCarrito: () => set({ carrito: [] }),
-    }),
-            {
-                name: "carrito-storage",
-                getStorage: () => localStorage,
+
+            syncCarrito: () => {
+                const storedState = JSON.parse(localStorage.getItem("carrito-storage"));
+                if (storedState) {
+                    set({ carrito: storedState.state.carrito });
+                }
             }
-        )
-    );
+        }),
+        {
+            name: "carrito-storage",
+            getStorage: () => localStorage,
+        }
+    )
+);
 
 export default carritoStore;
+
+//para actualizar el carrito si esta en diferentes ventanas
+if (typeof window !== "undefined") {
+    window.addEventListener("storage", (event) => {
+    if (event.key === "carrito-storage") {
+        //llama a la funcion creada en el store para sincronizar los carritos en todas las ventanas
+        carritoStore.getState().syncCarrito();
+    }
+  });
+}

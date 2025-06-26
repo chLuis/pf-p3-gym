@@ -3,7 +3,6 @@ import MemberSearch from "./member-search";
 import LogoutButton from "./logoutButton";
 import { CgShoppingCart } from "react-icons/cg";
 import carritoStore from "../store/storeCarrito";
-import { useEffect } from "react";
 import userStore from "../store/storeUsuario";
 
 export const Navbar = () => {
@@ -16,17 +15,13 @@ export const Navbar = () => {
     { value: "nosotros", location: "nosotros"},
     { value: <CgShoppingCart className="text-2xl stroke-1" />, location: "carrito"}
   ]
-  
-  useEffect(() => {
-    console.log(carrito.length);
-  }, [carrito])
 
 
   return (
     <div className="flex gap-2 items-center justify-between px-4 py-1 w-full border-b font-rubik-dirt border-b-primary">
       <Link to="/" className="flex flex-nowrap gap-1 p-1 items-center">
         <img src="/logo.webp" alt="logo" className="rounded-full aspect-square w-16" />
-        <span className="text-4xl font-semibold text-primary font-rubik-dirt">POWERHOUSE</span>
+        <span className="text-4xl text-primary font-rubik-dirt">POWERHOUSE</span>
       </Link>
 
       <div className="flex gap-4 text-xl items-center">
@@ -40,7 +35,7 @@ export const Navbar = () => {
           </Link>}
         {pages.map((page, index) => (
           <Link
-            className="!text-primary !font-bold relative group capitalize"
+            className="!text-primary relative group capitalize"
             to={`/${page.location}`}
             key={index}
           >
