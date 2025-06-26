@@ -177,7 +177,7 @@ export default function FormProducto({ productoPut, categorias, imagenes, descue
           className="p-1 border rounded-md placeholder:opacity-50"
         />
       </label>
-      <button type="submit">
+      <button type="submit" className="mt-2 !text-primary !bg-black-custom hover:!bg-primary hover:!text-black duration-200">
         {productoPut?.id_producto !== 0  ? "Editar producto" : "Agregar Producto"}
       </button>
     </form>

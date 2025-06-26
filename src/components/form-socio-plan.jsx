@@ -26,7 +26,7 @@ export default function FormPlan({id_socio, getSocios, cleanForm}) {
         <option value={2} className="text-black">2 Meses</option>
         <option value={3} className="text-black">3 Meses</option>
       </select>
-      <button type="submit">Agregar</button>
+      <button type="submit" className="mt-2 !text-primary !bg-black-custom hover:!bg-primary hover:!text-black duration-200">Agregar</button>
     </form>
   );
 

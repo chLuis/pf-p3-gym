@@ -65,7 +65,7 @@ export const AdminCategorias = () => {
                 >
                   <td className="capitalize px-2">{categoria.nombre}</td>
                   <td className="flex flex-nowrap gap-2 items-center justify-center">
-                    <button className="text-white !bg-blue-700 !p-1 hover:scale-105 duration-200" onClick={() => setCategoriaPatch(categoria)}>
+                    <button className="!text-white !bg-blue-700 !p-1 hover:scale-105 duration-200" onClick={() => setCategoriaPatch(categoria)}>
                       Editar
                     </button>
                     <DeleteCategoria

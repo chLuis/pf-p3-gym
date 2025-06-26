@@ -64,7 +64,7 @@ export default function FormDescuentos({descuentosPatch, getDescuentos, handleCl
           <span>Motivo</span>
           <input type="text" defaultValue={descuentosPatch?.motivo} name="motivo" id="motivo" className='p-2 border rounded-md placeholder:opacity-50' />
         </label>
-        <button className="mt-2" type="submit">{descuentosPatch?.motivo ? "Editar descuento" : "Agregar descuento"}</button>
+        <button className="mt-2 !text-primary !bg-black-custom hover:!bg-primary hover:!text-black duration-200" type="submit">{descuentosPatch?.motivo ? "Editar descuento" : "Agregar descuento"}</button>
       </form>
   )
 }

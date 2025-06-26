@@ -87,7 +87,7 @@ export default function FormSocio({socioPatch, getSocios, cleanForm}) {
         <span>test</span>
       <input type="date" required name="socio_hasta" id="socio_hasta" className='p-1 border rounded-md placeholder:opacity-50 w-full'/>
       </label>
-      <button className="mt-2">{socioPatch?.nombre ? "Editar socio" : "Agregar Socio"}</button>
+      <button className="mt-2 !text-primary !bg-black-custom hover:!bg-primary hover:!text-black duration-200">{socioPatch?.nombre ? "Editar socio" : "Agregar Socio"}</button>
     </form>
   )
 }

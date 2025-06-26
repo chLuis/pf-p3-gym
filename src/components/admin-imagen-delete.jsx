@@ -18,7 +18,7 @@ export default function DeleteImagen({ id_imagen, getImagenes }) {
   }
   return (
     <button
-      className="text-white bg-red-700 !p-1 hover:scale-105 duration-200"
+      className="!text-white !bg-red-700 !p-1 hover:scale-105 duration-200"
       onClick={handleDelete}
     >
       Eliminar
