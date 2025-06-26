@@ -4,45 +4,57 @@ import { LuX } from "react-icons/lu";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export default function MemberSearch() {
-  const [memberModal, setMemberModal] = useState(false);
-  const [showMember, setShowMember] = useState(false);
-  const [searchMember, setSearchMember] = useState("");
-  const [member, setMember] = useState({
+const initialValues = {
     nombre: "",
     apellido: "",
     dni: "",
     nombre_plan: "",
     socio_hasta: "",
-  });
+  }
 
-  const handleMember = () => {
-    setMemberModal(true);
-  };
+export default function MemberSearch() {
+  const [memberModal, setMemberModal] = useState(false);
+  const [showMember, setShowMember] = useState(false);
+  const [searchMember, setSearchMember] = useState("");
+  const [member, setMember] = useState(initialValues);
+
+  //cierra modal y vuelve valores a los iniciales, elimina los datos del estado de busqueda
   const handleCloseModal = () => {
     setMemberModal(false);
     setShowMember(false);
+    setSearchMember("")
+    setMember(initialValues)
   }
 
   const handleSearchMember = async () => {
+    //valido que el dni sea de 8 digitos
+    if(searchMember.length !== 8) return toast.error("El DNI debe tener 8 digitos");
+    //valido que los digitos ingresados sean todos numeros
+    if(isNaN(Number(searchMember))) return toast.error("El DNI debe ser un numero");
+
+    //realizo la busqueda del socio por dni
     const {data} = await axios.get(`${import.meta.env.VITE_BACK}/socios/${searchMember}`)
     
+    //si no se encontraron coincidencias se muestra por toast y se corta la funcion
     if(data.data.length === 0) {
       setShowMember(false);
       return toast.error("No se encontró el socio");
     }
-      setMember(data.data[0])
+    //si hay coincidencias se cargan los datos en el estado y se muestra la parte del html a renderizar
+    setMember(data.data[0])
     setShowMember(true)
   }
 
   return (
     <div className="z-50 font-medium">
+    {/* Boton que hará aparecer el modal para buscar estado del socio */}
       <div
         className="!text-primary hover:!text-black hover:bg-primary border px-2 py-2 !font-bold relative group capitalize cursor-pointer duration-200"
-        onClick={handleMember}
+        onClick={() => setMemberModal(true)}
       >
         Socios
       </div>
+      {/* Modal de busqueda del socio */}
       {memberModal && (
         <div
           onClick={handleCloseModal}
@@ -78,6 +90,7 @@ export default function MemberSearch() {
                 Buscar
               </button>
             </div>
+            {/* Aqui se muestran los datos del socio que se encontró */}
             {showMember && (
               <div className="flex flex-nowrap gap-1 border rounded-md p-2 mt-6">
                 <BiUser className="min-w-8 mt-2" />

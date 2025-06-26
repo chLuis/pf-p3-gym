@@ -55,7 +55,7 @@ export const AdminImagenes = () => {
                 <td className="capitalize px-2"><img src={imagen?.url} alt={imagen?.nombre} className='aspect-square object-contain min-w-20 w-20 max-w-20'/></td>
                 <td className="capitalize px-2 flex-1">{imagen?.nombre}</td>
                 <td className="flex flex-nowrap gap-2 items-center justify-center">
-                  <button className='text-white bg-blue-700 !p-1 hover:scale-105 duration-200' onClick={() => setImagenesPatch(imagen)}>Editar</button>
+                  <button className='!text-white !bg-blue-700 !p-1 hover:scale-105 duration-200' onClick={() => setImagenesPatch(imagen)}>Editar</button>
                   <DeleteImagen id_imagen={imagen.id_imagen} getImagenes={fetchImagenesAction}/>
                 </td>
               </tr>

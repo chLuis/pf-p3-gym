@@ -88,7 +88,7 @@ export const AdminProductos = () => {
               <td className='min-w-20 max-w-20 w-full p-1 text-center'>{producto.stock}</td>
               <td className='min-w-20 max-w-20 w-full p-1 text-center'>{producto.descuento}%</td>
               <td className='min-w-36 max-w-36 w-full p-1 flex flex-nowrap justify-end gap-1'>
-                <button className='text-white bg-blue-700 !p-1 hover:scale-105 duration-200' onClick={() => setProductoPut(producto)}>Editar</button>
+                <button className='!text-white !bg-blue-700 !p-1 hover:scale-105 duration-200' onClick={() => setProductoPut(producto)}>Editar</button>
                 <DeleteProducto id_producto={producto.id_producto} getProductos={fetchProductosAction}/>
               </td>
             </tr>

@@ -18,7 +18,7 @@ export default function DeleteDescuento({ id_descuento, getDescuentos }) {
   }
   return (
     <button
-      className="text-white bg-red-700 !p-1 hover:scale-105 duration-200"
+      className="!text-white !bg-red-700 !p-1 hover:scale-105 duration-200"
       onClick={handleDelete}
     >
       Eliminar

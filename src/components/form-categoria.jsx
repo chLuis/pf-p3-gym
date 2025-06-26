@@ -58,7 +58,7 @@ export default function FormCategoria({categoriaPatch, getCategorias, handleClea
           <span>Nombre</span>
           <input type="text" defaultValue={categoriaPatch?.nombre} name="nombre" id="nombre" className='p-2 border rounded-md placeholder:opacity-50' />
         </label>
-        <button className="mt-2" type="submit">{categoriaPatch?.nombre ? "Editar categoria" : "Agregar categoria"}</button>
+        <button className="mt-2 !text-primary !bg-black-custom hover:!bg-primary hover:!text-black duration-200" type="submit">{categoriaPatch?.nombre ? "Editar categoria" : "Agregar categoria"}</button>
       </form>
   )
 }

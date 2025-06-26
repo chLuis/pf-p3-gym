@@ -61,7 +61,7 @@ export const AdminSocios = () => {
                   <td className='min-w-24 max-w-24 p-1 capitalize'>{socio.nombre_plan}</td>
                   <td className='min-w-32 max-w-32 p-1 text-center'>{socio.socio_hasta}</td>
                   <td className='min-w-52 max-w-52 p-1 flex flex-nowrap justify-end gap-1'>
-                    <button className='text-white bg-blue-700 !p-1 hover:scale-105 duration-200' onClick={() => setSocioPatch(socio)}>Editar</button>
+                    <button className='!text-white !bg-blue-700 !p-1 hover:scale-105 duration-200' onClick={() => setSocioPatch(socio)}>Editar</button>
                     <DeleteSocio id_socio={socio.id_socio} getSocios={fetchSocios} />
                   </td>
                 </tr>

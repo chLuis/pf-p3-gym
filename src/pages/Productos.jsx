@@ -65,7 +65,10 @@ export const Productos = () => {
   
   return (
     <div className="w-full max-w-7xl mx-auto p-4 grid grid-cols-8 gap-6 !text-primary font-rubik">
-    {!showFilter ?<button className="hover:!border-primary col-span-8 sm:col-span-3 md:col-span-2 h-fit flex flex-nowrap gap-2 items-center justify-center" onClick={() => setShowFilter(true)}>Filtrar <BiChevronDown /></button>
+    {!showFilter 
+    ? <button className="!border-primary !text-primary !bg-black-custom col-span-8 sm:col-span-3 md:col-span-2 h-fit flex flex-nowrap gap-2 items-center justify-center hover:!bg-primary hover:!text-black" onClick={() => setShowFilter(true)}>
+        Filtrar <BiChevronDown />
+      </button>
       :<div className="col-span-8 sm:col-span-3 md:col-span-2 flex flex-col gap-2">
         <div className="border rounded-md flex flex-col gap-2 p-4">
         <p>Filtrar por:</p>
@@ -84,7 +87,7 @@ export const Productos = () => {
           <input type="range" className="p-2 border-b accent-primary" defaultValue={10000} min={minPrice} max={10000} onChange={(e) => handleMaxPrice(e.target.value)}/>
 
         </div>
-        <button className="hover:!border-primary flex flex-nowrap gap-2 items-center justify-center" onClick={() => setShowFilter(false)}>Ocultar <BiChevronDown className="rotate-180"/></button>
+        <button className="!border-primary !text-primary !bg-black-custom col-span-8 sm:col-span-3 md:col-span-2 h-fit flex flex-nowrap gap-2 items-center justify-center hover:!bg-primary hover:!text-black" onClick={() => setShowFilter(false)}>Ocultar <BiChevronDown className="rotate-180"/></button>
       </div>}
       {/* <div className={`${isLoading ? "opacity-30 pointer-events-none" : ""} h-fit col-span-8 sm:col-span-5 md:col-span-6 grid grid-cols-2 lg:grid-cols-3 gap-7`}> */}
       <div className={` h-fit col-span-8 sm:col-span-5 md:col-span-6 grid grid-cols-2 lg:grid-cols-3 gap-7`}>
