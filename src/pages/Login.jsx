@@ -55,8 +55,8 @@ export const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className=" max-w-md w-full rounded-2xl shadow-lg p-8 border border-gray-200 bg-primary">
-        <h1 className="!text-2xl !text-center !font-semibold !text-gray-800 font-rubik-dirt uppercase">
-          Ingreso</h1> <p className="!font-semibold font-rubik-dirt text-center !mb-6 text-xl uppercase !text-gray-800">Admin Powerhouse</p>
+        <h1 className="!text-2xl !text-center !text-gray-800 font-rubik-dirt uppercase">
+          Ingreso</h1> <p className="font-rubik-dirt text-center !mb-6 text-xl uppercase !text-gray-800">Admin Powerhouse</p>
         <form action="" className="flex flex-col space-y-4" onSubmit={handleSubmit}>
           <div className="text-left">
             <label htmlFor="" className="block text-xl font-semibold text-gray-700 mb-1">Usuario</label>
