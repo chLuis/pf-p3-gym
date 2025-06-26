@@ -19,7 +19,7 @@ export const Admin = () => {
 
 
   return (
-    <div className='min-h-[150dvh]'>
+    <div className='min-h-[150dvh] text-white'>
       <header className='p-4 font-rubik'>
         <h2 className='text-4xl font-semibold'>Panel de Aministración</h2>
         <p>Gestiona imágenes, productos y membresías de tu gimnasio fácilmente.</p>
@@ -27,9 +27,10 @@ export const Admin = () => {
       <div className='border-t w-full p-4'>
         <div className='w-fit rounded-md px-2 py-1 flex flex-nowrap gap-3 mx-auto'>
           {opciones.map((opcion, index) => 
-            <button key={index} onClick={() => setTabRender(opcion.nombre)} className={`${tabRender === opcion.nombre ? "!border-primary text-black bg-primary capitalize" : "" } flex flex-nowrap gap-1 items-center border !border-black hover:!border-primary capitalize`}>{opcion.icono} {opcion.nombre}</button>
+            <button key={index} onClick={() => setTabRender(opcion.nombre)}
+            className={`${tabRender === opcion.nombre ? "!border-primary !text-black !bg-primary capitalize" : "" } flex flex-nowrap gap-1 items-center border !border-black hover:!border-primary capitalize !bg-black-custom`}>{opcion.icono} {opcion.nombre}</button>
           )}          
-         
+        
         </div>
         <div className='w-full max-w-7xl mx-auto pt-4'>
           {tabRender === "categorias" && <AdminCategorias /> }
