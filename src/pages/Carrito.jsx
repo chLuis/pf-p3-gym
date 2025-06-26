@@ -3,16 +3,18 @@ import { fetchCarrito } from '../services/productos.service'
 import { CgSpinner } from 'react-icons/cg'
 import carritoStore from '../store/storeCarrito'
 
-  // const {carrito, eliminarProducto, vaciarCarrito } = carritoStore()
-  // const carrito = carritoStore(state => state.carrito);
-  // const eliminarProducto = carritoStore(state => state.eliminarProducto);
-  // const vaciarCarrito = carritoStore(state => state.vaciarCarrito);
 
 export const Carrito = () => {
+  //const {carrito, eliminarProducto, vaciarCarrito } = carritoStore()
+  const carrito = carritoStore(state => state.getCarrito());
+  const eliminarProducto = carritoStore(state => state.eliminarProducto);
+  const vaciarCarrito = carritoStore(state => state.vaciarCarrito);
+
+
   const [carritoProductos, setCarritoProductos] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [total, setTotal] = useState(0)
-  const carrito = [1,2,6, 3,4,5]
+  //const carrito = [1,2,6, 3,4,5]
 
   //Traigo la informacion de los productos del carrito y le asigno en cantidad el valor 1 por defecto si hay stock
   const fetchCarritoAction = async (car) => {
@@ -31,8 +33,8 @@ export const Carrito = () => {
   useEffect(() => {
     fetchCarritoAction(carrito)
     setIsLoading(false)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  
+  }, [carrito]);
 
   //Cada vez que el carrito se modifica tengo que calcular nuevamente el valor del total de la compra
   useEffect(() => {
@@ -94,12 +96,12 @@ export const Carrito = () => {
               </td>
               <td className='w-20 text-center'>{producto.stock}</td>
               <td className=''>{producto.precio}</td>
-              <td className='px-1'><button className='!p-2  !border-transparent text-red-700 hover:!border-red-700'>Eliminar</button></td>
+              <td className='px-1'><button onClick={() => eliminarProducto(producto.id_producto)} className='!p-2 !border-transparent text-red-700 hover:!border-red-700'>Eliminar</button></td>
             </tr>
           ))}
         </tbody>
       </table>
-
+          <button onClick={vaciarCarrito} >Vaciar carrito</button>
       <footer className='flex flex-row justify-center gap-4 border-t max-w-[720px] mt-4 mx-auto text-2xl py-2'>
         <div>Total del carrito</div>
         <div>$ {total}</div>

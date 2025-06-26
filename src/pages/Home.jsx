@@ -54,6 +54,10 @@ export const Home = () => {
           <p className="text-center lg:text-start">En Powerhouse tenemos todas las actividades que buscas, combinar distintas actividades es fundamental para mantener la motivacion y disfrutrar al maximo tu rutina deportiva</p>
           <button className="!block !mx-auto !rounded-full !text-center !bg-primary !text-black hover:!bg-amber-200 !px-6 !py-3 !text-lg !font-semibold !mt-6">Asociate</button>
         </aside>
+        {/* {opciones.map((opcion, index) => 
+        <div key={index} className={`flex items-center gap-6 ${index % 2 === 0 ? "" :" flex-row-reverse" }`}>
+
+        </div>)} */}
         <section className="col-span-2 text-white p-6 space-y-12"> {/*Agregamos actividad con imagenes y descripcion */}
           <div className="flex items-center gap-6">
             <img src="/musculacion.png" alt="musculacion" className="w-1/2 rounded-xl"/>
@@ -89,6 +93,13 @@ export const Home = () => {
         <h2 className="text-black font-extrabold text-4xl sm:text-6xl text-center mb-12 font-rubik-dirt">Conoce nuestros planes</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"> {/*Creamos 3 cards con el contenido de cada plan */}
           {/*Card 1 */}
+          {/* const planes = [
+            { 
+              plan: "Plan basico", 
+              precio: "$30.000", 
+              descripcion: "Acceso a sala de musculación, clases grupales básicas y vestuarios. Ideal para comenzar." 
+            }
+          ] */}
           <div className="bg-amber-100 max-w-96 p-10 pt-10 rounded-xl shadow-md shadow-black/50 hover:shadow-lg text-center mx-auto duration-200">
             <h3 className="text-2xl font-bold pt-4 font-rubik-dirt capitalize">Plan basico</h3>
             <div className="-mt-2">Mensual</div>

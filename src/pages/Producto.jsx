@@ -1,40 +1,18 @@
 import { useParams, Link } from "react-router-dom";
-// import { PRODUCTOS_CONST } from "../lib/productos";
 import { useEffect, useState } from "react";
-// import axios from "axios";
 import { fetchProductosRelacionados, fetchProductoUnico } from "../services/productos.service";
 import carritoStore from "../store/storeCarrito";
 import { MdAddShoppingCart } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export const Producto = () => {
   const { id } = useParams();
-
   const agregarProducto = carritoStore(state => state.agregarProducto)
-  const getCarrito = carritoStore(state => state.getCarrito)
-  // const { agregarProducto } = carritoStore()
+
 
   const [producto, setProducto] = useState([])
   const [relacionados, setRelacionados] = useState([])
-  // const [cargar, setCargar] = useState(true)
-  // const [error, setError] = useState()
-
-  // useEffect(() => {
-  //   const fetchProducto = async () => {
-  //     try {
-  //       const response = await axios.get(`${import.meta.env.VITE_BACK}/productos/${id}`)
-  //       console.log(response);
-  //       setProducto(response.data)
-  //     } catch (err) {
-  //       console.error("Error al traer el producto:", err)
-  //       setError("Producto no encontrado")
-  //     } finally {
-  //       setCargar(false)
-  //     }
-  //   }
-
-  //   fetchProducto()
-  // }, [id])
 
   const fetchProductoUnicoAction = async (id) => {
     try {
@@ -68,9 +46,11 @@ export const Producto = () => {
 
   // getCarrito()
   const handleAgregar = () => {
-    console.log("Producto a agregar: ", producto);
     agregarProducto(producto.id_producto)
-    console.log(getCarrito());
+    toast.success("Producto agregado al carrito", {
+      autoClose: 1500,
+      pauseOnHover: false
+    })
   }
   return (
     <>
@@ -100,9 +80,9 @@ export const Producto = () => {
         <p className="text-md text-primary">📝 {producto.descripcion}</p>
 
         <div className="flex flex-wrap items-center gap-4 mt-4">
-          <a
-            className="flex items-center rounded-full bg-green-600 hover:bg-green-700 text-black font-bold px-6 py-2"
-            href={`https://wa.me/3813676949?text=Hola,%20quiero%20comprar%20${encodeURIComponent(producto.nombre)}`}
+          <a 
+            className="flex items-center rounded-full bg-green-600 hover:bg-green-700 text-black font-bold px-6 py-2 hover:!text-white duration-200"
+            href={`https://wa.me/3813676949?text=Hola,%20quiero%20comprar%20${encodeURIComponent('producto.nombre')}`}
             target="_blank"
             rel="noopener noreferrer"
           >

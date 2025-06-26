@@ -49,7 +49,7 @@ export default function MemberSearch() {
     <div className="z-50 font-medium">
     {/* Boton que hará aparecer el modal para buscar estado del socio */}
       <div
-        className="!text-primary hover:!text-black hover:bg-primary border px-2 py-2 !font-bold relative group capitalize cursor-pointer duration-200"
+        className="!text-primary hover:!text-black !rounded-md hover:bg-primary border px-2 py-2 !font-bold relative group capitalize cursor-pointer duration-200"
         onClick={() => setMemberModal(true)}
       >
         Socios
