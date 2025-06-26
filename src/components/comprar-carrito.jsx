@@ -25,7 +25,7 @@ export default function ComprarCarrito({lista, total, envio, cantidad}) {
             <div>$ {total + envio}</div>
           </div>
         </div>
-        <a href={`https://wa.me/381617717?text=${encodeURIComponent(mensaje)}`} target='_blank' className='mx-4 mb-4 p-3 text-center rounded-md text-white bg-blue-700 hover:bg-blue-800 duration-200 '>Terminar compra</a>
+        <a href={`https://wa.me/3816177174?text=${encodeURIComponent(mensaje)}`} target='_blank' className='mx-4 mb-4 p-3 text-center rounded-md text-white bg-blue-700 hover:bg-blue-800 duration-200 '>Terminar compra</a>
         </div>
   )
 }

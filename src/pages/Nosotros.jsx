@@ -110,7 +110,7 @@ export const Nosotros = () => {
 
         {/* Cierre */}
         <div className="text-center mt-8">
-          <h2 className="titulo-noso">¡Unite a la familia <span className="font-rubik-dirt uppercase">PowerHouse</span>!</h2>
+          <h2 className="text-3xl">¡Unite a la familia <span className="font-rubik-dirt uppercase">PowerHouse</span>!</h2>
           <p>Transformá tu cuerpo, mejorá tu mente y viví una vida más saludable.</p>
         </div>
       </div>
