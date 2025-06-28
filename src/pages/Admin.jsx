@@ -13,6 +13,7 @@ import UnauthorizedComponent from '../components/unauthorized'
 import { useNavigate } from 'react-router-dom'
 import { FiPercent } from 'react-icons/fi'
 import { TbGridDots } from 'react-icons/tb'
+import { AdminUsuarios } from '../components/admin-usuarios'
 
 export const Admin = () => {
   const usuarioRol = userStore(state => state.getRol())
@@ -54,9 +55,9 @@ export const Admin = () => {
           {tabRender === "imagenes" ? anyBody(usuarioRol) ? <AdminImagenes /> : <UnauthorizedComponent /> : null}
           {tabRender === "descuentos" ? anyBody(usuarioRol) ? <AdminDescuentos /> : <UnauthorizedComponent /> : null}
           {tabRender === "productos" ? anyBody(usuarioRol) ? <AdminProductos /> : <UnauthorizedComponent /> : null}
-          {tabRender === "ventas" ? onlyAdmins(usuarioRol) ? <AdminVentas /> : <UnauthorizedComponent /> : null}
-          {tabRender === "socios" ? onlySuperadmin(usuarioRol) ? <AdminSocios /> : <UnauthorizedComponent /> : null}
-          {tabRender === "usuarios" ? onlySuperadmin(usuarioRol) ? <AdminSocios /> : <UnauthorizedComponent /> : null}
+          {tabRender === "ventas" ? anyBody(usuarioRol) ? <AdminVentas /> : <UnauthorizedComponent /> : null}
+          {tabRender === "socios" ? onlyAdmins(usuarioRol) ? <AdminSocios /> : <UnauthorizedComponent /> : null}
+          {tabRender === "usuarios" ? onlyAdmins(usuarioRol) ? <AdminUsuarios isAuthorized={onlySuperadmin(usuarioRol)}/> : <UnauthorizedComponent /> : null}
         </div>
       </div>
     </div>
@@ -66,7 +67,6 @@ export const Admin = () => {
 const anyBody = (rol) => {
   const isAuthorized = (rol === "administrador" || rol === 'superadmin'  || rol === 'vendedor') ? true : false
   return isAuthorized
-
 }
 
 const onlyAdmins = (rol) => {

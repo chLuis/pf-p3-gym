@@ -17,7 +17,6 @@ export const AdminVentas = () => {
   const [ventaPatch, setVentasPatch] = useState(initialValues)
   const [ventas, setVentas] = useState([])
   const [productos, setProductos] = useState([])
-  //const [descuentos, setDescuentos] = useState([])
 
   const fetchVentasAction = async () => {
     const {status, data} = await fetchVentas()
@@ -29,17 +28,10 @@ export const AdminVentas = () => {
     if(status === 200) setProductos(data)
   }
 
-  // const fetchDescuentosAction = async () => {
-  //   const {status, data} = await fetchDescuentos()
-  //   if(status === 200) setDescuentos(data)
-  // }
 
   useEffect(() => {
     fetchVentasAction()
     fetchProductosAction();
-    // fetchCategoriasAction();
-    // fetchImagenesAction();
-    // fetchDescuentosAction()
   }, [])
 
   const handleClean = () => {

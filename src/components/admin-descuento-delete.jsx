@@ -10,7 +10,7 @@ export default function DeleteDescuento({ id_descuento, getDescuentos }) {
       if (data.status === 200) {
         toast.success("Descuento eliminado con éxito");
         getDescuentos();
-      } else toast.error("Error al eliminar descuento");
+      } else toast.error(data?.message || "Error al eliminar descuento");
     } catch (error) {
       console.log(error);
       toast.error("Hubo un error");

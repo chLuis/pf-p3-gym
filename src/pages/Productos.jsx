@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import ProductCard from "../components/product-card"
 import { BiChevronDown } from "react-icons/bi"
 import { fetchCategorias, fetchProductos } from "../services/productos.service"
+import { PiBroom } from "react-icons/pi"
 
 export const Productos = () => {
   const [categorias, setCategorias] = useState([])
@@ -13,6 +14,11 @@ export const Productos = () => {
   const [categoryFiter, setCategoryFiter] = useState([])
   const [showFilter, setShowFilter] = useState(false)
 
+  const handleRemoveFilters = () => {
+    setCategoryFiter([])
+    setMinPrice(0)
+    setMaxPrice(900000)
+  }
 
   const fetchProductosAction = async () => {
     const {status, data} = await fetchProductos()
@@ -42,7 +48,7 @@ export const Productos = () => {
       }
       handleFilter()
       setIsLoading(false)
-    }, 500)
+    }, 300)
     return () => clearTimeout(timeout)
   },[productos, categoryFiter, maxPrice, minPrice])
 
@@ -70,9 +76,10 @@ export const Productos = () => {
   
   return (
     <div className="w-full max-w-7xl mx-auto p-4 grid grid-cols-8 gap-6 !text-primary font-rubik">
+    <div className="col-span-8 sm:col-span-3 md:col-span-2 flex flex-col gap-2">
     {!showFilter 
     ? <button className="!border-primary !text-primary !bg-black-custom col-span-8 sm:col-span-3 md:col-span-2 h-fit flex flex-nowrap gap-2 items-center justify-center hover:!bg-primary hover:!text-black" onClick={() => setShowFilter(true)}>
-        Filtrar <BiChevronDown />
+        Filtrar <BiChevronDown className="animate-pulse text-xl stroke-2"/>
       </button>
       :<div className="col-span-8 sm:col-span-3 md:col-span-2 flex flex-col gap-2">
         <div className="border rounded-md flex flex-col gap-2 p-4">
@@ -92,11 +99,18 @@ export const Productos = () => {
           <input type="range" className="p-2 border-b accent-primary" defaultValue={900000} min={minPrice} max={900000} onChange={(e) => handleMaxPrice(e.target.value)}/>
 
         </div>
-        <button className="!border-primary !text-primary !bg-black-custom col-span-8 sm:col-span-3 md:col-span-2 h-fit flex flex-nowrap gap-2 items-center justify-center hover:!bg-primary hover:!text-black" onClick={() => setShowFilter(false)}>Ocultar <BiChevronDown className="rotate-180"/></button>
+        <button className="!border-primary !text-primary !bg-black-custom col-span-8 sm:col-span-3 md:col-span-2 h-fit flex flex-nowrap gap-2 items-center justify-center hover:!bg-primary hover:!text-black" onClick={() => setShowFilter(false)}>Ocultar <BiChevronDown className="rotate-180 animate-pulse text-xl stroke-2"/></button>
       </div>}
+      {(categoryFiter.length > 0 || minPrice > 0 || maxPrice < 900000) && <button
+      onClick={handleRemoveFilters}
+      className="!bg-primary w-full text-black flex flex-nowrap gap-1 justify-center items-center hover:!bg-primary/90 !durartion-200"
+      >
+      <PiBroom /> Quitar filtros
+    </button>}
+      </div>
       <div className={`${isLoading ? "opacity-30 pointer-events-none" : ""} h-fit col-span-8 sm:col-span-5 md:col-span-6 grid grid-cols-2 lg:grid-cols-3 gap-7`}>
         {productosFiltered.map((producto, index) =>
-          <ProductCard key={index} producto={producto} />
+          <ProductCard key={index} producto={producto}/>
         )}
       </div>
     </div>
