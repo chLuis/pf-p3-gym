@@ -1,7 +1,7 @@
 export const PRODUCTOS_CONST = [
   {
     "id": 1,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Toalla Deportiva Microfibra",
     "descripcion": "Toalla ultra absorbente de secado rápido, ideal para entrenamientos intensos.",
     "precio": 2500,
@@ -12,7 +12,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 2,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Mancuerna Hexagonal 5kg",
     "descripcion": "Mancuerna de goma antideslizante con agarre ergonómico.",
     "precio": 5500,
@@ -23,7 +23,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 3,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Proteína Whey Chocolate 1kg",
     "descripcion": "Suplemento proteico para recuperación y aumento muscular.",
     "precio": 9500,
@@ -34,7 +34,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 4,
-    "marca": "Nike",
+    "marca": "adidas",
     "nombre": "Guantes de Entrenamiento Pro",
     "descripcion": "Guantes acolchados con ventilación y agarre reforzado.",
     "precio": 3200,
@@ -45,7 +45,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 5,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Colchoneta Yoga Antideslizante",
     "descripcion": "Superficie antideslizante para yoga, pilates o estiramientos.",
     "precio": 4800,
@@ -56,7 +56,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 6,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Cinturón de Fuerza Neoprene",
     "descripcion": "Soporte lumbar para levantamiento de peso.",
     "precio": 3900,
@@ -67,7 +67,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 7,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Mancuerna Hexagonal 10kg",
     "descripcion": "Ideal para entrenamientos de fuerza e hipertrofia.",
     "precio": 9900,
@@ -78,7 +78,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 8,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Creatina Monohidratada 300g",
     "descripcion": "Mejora la fuerza y el rendimiento en entrenamientos intensos.",
     "precio": 4500,
@@ -89,7 +89,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 9,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Shaker Mezclador 600ml",
     "descripcion": "Vaso mezclador con rejilla para batidos sin grumos.",
     "precio": 1200,
@@ -100,7 +100,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 10,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Rodillera Deportiva Ajustable",
     "descripcion": "Protección y soporte para entrenamientos de pierna.",
     "precio": 2200,
@@ -111,7 +111,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 11,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Toalla de Mano Gym Pack x2",
     "descripcion": "Set de 2 toallas pequeñas para manos y rostro.",
     "precio": 1800,
@@ -122,7 +122,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 12,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Proteína Vegana Vainilla 1kg",
     "descripcion": "Proteína vegetal ideal para veganos y alérgicos a lácteos.",
     "precio": 11000,
@@ -133,7 +133,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 13,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Bandas de Resistencia Pack x5",
     "descripcion": "5 niveles de resistencia para entrenamientos funcionales.",
     "precio": 3500,
@@ -144,7 +144,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 14,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Mancuerna Ajustable 20kg",
     "descripcion": "Sistema con discos intercambiables para variar el peso.",
     "precio": 21500,
@@ -166,7 +166,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 16,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "L-Carnitina Líquida 500ml",
     "descripcion": "Suplemento para quema de grasa y energía.",
     "precio": 7200,
@@ -177,7 +177,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 17,
-    "marca": "Nike",
+    "marca": "puma",
     "nombre": "Proteína Isolate Frutilla 1kg",
     "descripcion": "Alta pureza, ideal para después del entrenamiento.",
     "precio": 12500,
@@ -188,7 +188,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 18,
-    "marca": "Nike",
+    "marca": "puma",
     "nombre": "Toalla XL Secado Rápido",
     "descripcion": "Tamaño grande para cubrir bancas o usar como alfombra.",
     "precio": 3200,
@@ -199,7 +199,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 19,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Cuerda para Saltar Profesional",
     "descripcion": "Cuerda con rodamientos para mayor velocidad.",
     "precio": 2400,
@@ -210,7 +210,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 20,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Mancuerna Vinilo 3kg (Par)",
     "descripcion": "Recubrimiento suave y colores vivos.",
     "precio": 4600,
@@ -221,7 +221,7 @@ export const PRODUCTOS_CONST = [
   },
     {
     "id": 21,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Disco Olímpico 10kg Goma",
     "descripcion": "Disco de entrenamiento con cubierta de goma para absorción de impacto.",
     "precio": 8800,
@@ -232,7 +232,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 22,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Barra Olímpica 20kg",
     "descripcion": "Barra profesional con rodamientos y agarre moleteado.",
     "precio": 26000,
@@ -243,7 +243,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 23,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Botella Térmica Acero 750ml",
     "descripcion": "Botella térmica para mantener tu bebida fría o caliente.",
     "precio": 3400,
@@ -254,7 +254,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 24,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Proteína Mass Gainer 3kg",
     "descripcion": "Ideal para ganancia de masa muscular rápida.",
     "precio": 16000,
@@ -265,7 +265,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 25,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Muslera de Compresión",
     "descripcion": "Soporte para muslos con ajuste de velcro.",
     "precio": 2800,
@@ -276,7 +276,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 26,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Rueda Abdominal Doble",
     "descripcion": "Rueda para fortalecer core, abdominales y hombros.",
     "precio": 3300,
@@ -287,7 +287,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 27,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "BCAA 2:1:1 300g",
     "descripcion": "Aminoácidos esenciales para recuperación muscular.",
     "precio": 6900,
@@ -298,7 +298,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 28,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Cinturón Lumbar Powerlifting",
     "descripcion": "Máxima rigidez para levantamientos pesados.",
     "precio": 7100,
@@ -309,7 +309,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 29,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Pesa Rusa 12kg",
     "descripcion": "Kettlebell ideal para entrenamiento funcional y fuerza.",
     "precio": 7400,
@@ -320,7 +320,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 30,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Tensor Elástico Rehabilitación",
     "descripcion": "Banda elástica suave para recuperación y estiramientos.",
     "precio": 1900,
@@ -331,7 +331,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 31,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Pre-Entreno Nitro Boost 300g",
     "descripcion": "Aumenta el foco, energía y rendimiento.",
     "precio": 8400,
@@ -342,7 +342,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 32,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Guantes de Ciclismo/Gym con Gel",
     "descripcion": "Mayor protección en palma y agarre suave.",
     "precio": 2700,
@@ -353,7 +353,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 33,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Toalla con Bolsillo Oculto",
     "descripcion": "Ideal para guardar llaves o celular mientras entrenás.",
     "precio": 3100,
@@ -364,7 +364,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 34,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Disco Olímpico Fraccional 2.5kg",
     "descripcion": "Disco de precisión para progresión de cargas.",
     "precio": 3500,
@@ -375,7 +375,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 35,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Mat Fitness Antideslizante",
     "descripcion": "Superficie texturizada para mejor agarre durante ejercicios de piso.",
     "precio": 4700,
@@ -386,7 +386,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 36,
-    "marca": "Adidas",
+    "marca": "adidas",
     "nombre": "Proteína Hidrolizada Café 1kg",
     "descripcion": "Rápida absorción, ideal para recuperación post entreno.",
     "precio": 13200,
@@ -397,7 +397,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 37,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Gorra Running Secado Rápido",
     "descripcion": "Protección solar con tejido respirable.",
     "precio": 2600,
@@ -408,7 +408,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 38,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Espuma Foam Roller Texturado",
     "descripcion": "Para automasajes y recuperación muscular.",
     "precio": 3900,
@@ -419,7 +419,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 39,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Short Deportivo Hombre Secado Rápido",
     "descripcion": "Short liviano y cómodo para entrenamiento o running.",
     "precio": 4100,
@@ -430,7 +430,7 @@ export const PRODUCTOS_CONST = [
   },
   {
     "id": 40,
-    "marca": "Nike",
+    "marca": "nike",
     "nombre": "Remera Técnica Mujer DryFit",
     "descripcion": "Remera con tecnología DryFit para mayor frescura.",
     "precio": 3600,

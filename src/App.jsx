@@ -10,10 +10,11 @@ import { Admin } from "./pages/Admin";
 import { Footer } from "./components/Footer";
 import { Error404 } from "./pages/Error404";
 import { Carrito } from "./pages/Carrito";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen min-w-full">
+    <div className="flex flex-col min-h-screen min-w-full overflow-clip">
       <Navbar />
       <main className="flex-1">
       <Routes>
@@ -28,6 +29,7 @@ function App() {
         <Route path="/carrito" element={<Carrito/>}/>
       </Routes>
       </main>
+      <ToastContainer />
       <Footer />
     </div>
   );
