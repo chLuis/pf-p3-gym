@@ -42,7 +42,7 @@ export const AdminVentas = () => {
     <div className='flex flex-col md:flex-row gap-4 font-rubik'>
       <div className='flex flex-col gap-2 max-w-96'>
         <div className='sticky top-2 flex flex-col gap-2 items-center'>
-          <FormVenta ventaPatch={ventaPatch} getVentas={fetchVentasAction} productos={productos}/>
+          <FormVenta ventaPatch={ventaPatch} getVentas={fetchVentasAction} productos={productos} cleanForm={handleClean}/>
           {ventaPatch.id_venta !== 0 && <button onClick={handleClean} className='!bg-primary w-full text-black flex flex-nowrap gap-1 justify-center items-center'><PiBroom /> Limpiar formulario</button>}
         </div>
       </div>
