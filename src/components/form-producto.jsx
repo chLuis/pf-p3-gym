@@ -2,11 +2,15 @@ import axios from "axios";
 import { useEffect, useRef } from "react";
 import { toast } from 'react-toastify';
 
+//Aqui traemos categorias/imagenes/descuentos de la base de datos, para poder elegirlos al momento de crear/editar un producto, hacemos un select para la eleccion de cada uno.
+//getProductos es para ejecutar la llamada a los productos de nuestra DB y la ejecutamos en caso de creacion/edicion exitosa
 export default function FormProducto({ productoPut, categorias, imagenes, descuentos, getProductos, handleClean }) {
+  //Creamos una referencia al formulario con useRef
   const formRef = useRef(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //const formData = new FormData(e.target);
+    //Creamos el objeto que vamos a enviar a la DB para su creacion/edicion
     const producto = {
       id_producto: productoPut?.id_producto,
       nombre: e.target.nombre.value,
@@ -17,30 +21,37 @@ export default function FormProducto({ productoPut, categorias, imagenes, descue
       imagen: e.target.imagen.value,
       descripcion: e.target.descripcion.value,
     }
+    //En caso de que no se haya elegido alguna categoria/descuento/imagen, no se puede avanzar con el submit y se da una alerta de que estan faltando campos para seleccionar
     if(producto.categoria === '0') return toast.error('Debe seleccionar una categoria')
     if(producto.descuento === '0') return toast.error('Debe seleccionar un descuento')
     if(producto.imagen === '0') return toast.error('Debe seleccionar una imagen')
     try {
-      //Creacion
+      //Creacion del producto con su mensaje informando al usuario en caso de exito/fallo
       if(producto.id_producto === 0) {
         const {data} = await axios.post(`${import.meta.env.VITE_BACK}/productos`, producto)
 
         if(data.status === 201) {
           toast.success(data.message || 'Producto agregado con éxito')
+          //Reseteamos el formulario
           formRef.current.reset()
+          //Como los productos cambiaron, debo actualizar los productos que tenemos en nuestro frontend
           getProductos()
+          //Limpiamos el formulario
           handleClean()
         } else {
           toast.error(data?.message || "Error al agregar producto")
         }
       } else {
-        // Edicion
+        //Edicion del producto con su mensaje informando al usuario en caso de exito/fallo
         const {data} = await axios.patch(`${import.meta.env.VITE_BACK}/productos/${producto.id_producto}`, producto)
-
+        //Debemos informar si hubbo alguna fila afectada para confirmar que el producto se modificó
         if(data.status === 200 && data.data.affectedRows === 1) {
           toast.success(data.message || 'Producto editado con éxito')
+          //Reseteamos el formulario
           formRef.current.reset()
+          //Como los productos cambiaron, debo actualizar los productos que tenemos en nuestro frontend
           getProductos()
+          //Limpiamos el formulario
           handleClean()
         } else {
           toast.error(data?.message || "Error al editar producto")
@@ -53,7 +64,9 @@ export default function FormProducto({ productoPut, categorias, imagenes, descue
     }
   };
 
+  //Cada vez que cambia el valor del producto a editar o crear le asignamos al formulario un nuevo valor para poder manejar la edicion o creacion
   useEffect(() => {
+    //Si el id_producto es !== 0, entonces estamos en la edicion de un producto
     if (productoPut?.id_producto !== 0) {
       formRef.current.nombre.value = productoPut.nombre;
       formRef.current.precio.value = productoPut.precio;
@@ -63,6 +76,7 @@ export default function FormProducto({ productoPut, categorias, imagenes, descue
       formRef.current.imagen.value = productoPut.id_imagen;
       formRef.current.descripcion.value = productoPut.descripcion;
     } else {
+      //Si el id_producto es === 0, entonces estamos en la creacion de un producto
       formRef.current.nombre.value = "";
       formRef.current.precio.value = null;
       formRef.current.stock.value = null;

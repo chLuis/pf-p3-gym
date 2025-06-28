@@ -78,7 +78,7 @@ export default function FormVenta({ventaPatch, getVentas, cleanForm, productos, 
       {/* {ventaPatch?.id_venta && <p className="-my-1 font-semibold text-sm text-primary text-center">----</p>} */}
       <label>
         <span>Producto</span>
-        <select name="id_producto" defaultValue={ventaPatch.id_producto} onChange={(e) => handleProductoChange(e.target.value)} className="p-1 border rounded-md placeholder:opacity-50 max-w-[350px]">
+        <select name="id_producto" defaultValue={ventaPatch.id_producto} onChange={(e) => handleProductoChange(e.target.value)} className="p-1 border rounded-md placeholder:opacity-50 max-w-[350px] w-full">
           <option value={0}>Elegir</option>
           {productos?.map((producto, index) => 
             <option key={index} value={producto.id_producto} className="text-black capitalize max-w-[350px] truncate">{producto.nombre}</option>

@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import Factura from './Factura';
-export default function ComprarCarrito({lista, total, envio, cantidad}) {
 
+export default function ComprarCarrito({lista, total, envio, cantidad}) {
+  //Mensaje que se va a enviar por whatsapp
   const [mensaje, setMensaje] = useState("")
+  //Con esto determinamos si el modal de la factura/detalle se muestra al usuario
   const [showFactura, setShowFactura] = useState(false)
 
   useEffect(() => {
+    //Armamos un string con todos los items del carrito para poder enviar un mensaje que este confeccionado de manera prolija
     const test = lista.reduce((acc, actual) => acc + `${actual.cantidad + ' ' + actual.nombre}\n`, 'Hola, me gustaría comprar: \n' )
     setMensaje(test);
   }, [lista])

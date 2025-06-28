@@ -28,7 +28,7 @@ export const Home = () => {
       {/*Aside ocupa el 50% de la pantalla al lado izquierdo */}
         <aside className="bg-gradient-to-r from-primary/80 to-primary/50 text-black p-12 h-fit m-6 border-2 border-black-custom rounded-md"> 
           <h1 className="text-xl lg:text-4xl text-black text-center mb-6 font-rubik-dirt">Entrenamiento personalizado</h1>
-          <p className="text-base md:text-lg">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur aperiam voluptatem laudantium, praesentium, ut, illo culpa repellendus vel nemo quasi esse soluta eligendi blanditiis vitae perspiciatis! Ipsum ea aliquam ullam.</p>
+          <p className="text-base text-center md:text-lg">Todos nuestros entrenadores son profesionales y te asesorarán en cada rutina para que puedas realizar los ejercicios de la forma correcta</p>
         </aside>
         {/*Section ocupa el 50% de la pantalla al lado derecho */}
         <section className="text-black p-6 flex flex-col justify-between min-h-[500px]"> 

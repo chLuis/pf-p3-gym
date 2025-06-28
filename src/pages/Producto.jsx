@@ -32,7 +32,6 @@ export const Producto = () => {
     if (producto.id_categoria) {
       const fetchRelacionados = async () => {
         try {
-          console.log(producto);
           const data = await fetchProductosRelacionados(producto.id_categoria)
           setRelacionados(data.filter(prod=>prod.id_producto !== producto.id_producto))
         } catch (error) {

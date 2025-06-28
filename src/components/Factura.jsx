@@ -2,8 +2,9 @@ import { FaWhatsapp } from "react-icons/fa"
 
 const Factura = ({lista, total, envio, closeFactura, mensaje}) => {
     return(
-        <div onClick={closeFactura} className="fixed inset-0 flex justify-center items-center backdrop-blur-md z-20 bg-black/50">
-            <div onClick={(e) => e.stopPropagation()} className="flex flex-col items-center gap-1 p-4 bg-white w-full rounded shadow max-w-3xl mx-auto text-black">
+        <div onClick={closeFactura} className="fixed inset-0 p-4 flex justify-center items-center backdrop-blur-md z-20 bg-black/50">
+        {/* StopPropagation, hace que cuando hagamos click dentro del detalle no se cierre el modal, solo queremos que se cierre cuando se haga un click fuera del mismo */}
+            <div onClick={(e) => e.stopPropagation()} className="flex flex-col overflow-x-auto items-center gap-1 p-4 bg-white w-full rounded shadow max-w-3xl mx-auto text-black">
                 <h2 className="text-2xl font-bold mb-4">Factura de compra</h2>
                 <table className="w-full border-collapse">
                     <thead>
@@ -37,6 +38,7 @@ const Factura = ({lista, total, envio, closeFactura, mensaje}) => {
                     </tr>
                 </tfoot>
                 </table>
+                {/* Enviamos el mensaje que confeccionamos en el componente padre */}
                 <a href={`https://wa.me/3816177174?text=${encodeURIComponent(mensaje)}`} target='_blank' className='flex flex-nowrap gap-1 items-center mx-auto mb-4 p-3 text-center rounded-md text-white bg-green-500 hover:bg-green-600 duration-200 '><FaWhatsapp className="text-xl"/> Comprar por WhatsApp</a>
             </div>
         </div>
