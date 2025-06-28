@@ -63,11 +63,11 @@ export default function FormSocio({socioPatch, getSocios, cleanForm}) {
       {socioPatch?.nombre && <p className="-my-1 font-semibold text-sm text-primary text-center">{socioPatch?.apellido} {socioPatch?.nombre}</p>}
       <label>
         <span>Nombre</span>
-        <input type="text" required name="nombre" placeholder='Nombre' id="nombre" className='p-1 border rounded-md placeholder:opacity-50'/>
+        <input type="text" required minLength={2} maxLength={32} name="nombre" placeholder='Nombre' id="nombre" className='p-1 border rounded-md placeholder:opacity-50'/>
       </label>
       <label>
         <span>Apellido</span>
-        <input type="text" required name="apellido" placeholder='Apellido' id="apellido" className='p-1 border rounded-md placeholder:opacity-50'/>
+        <input type="text" required minLength={2} maxLength={32} name="apellido" placeholder='Apellido' id="apellido" className='p-1 border rounded-md placeholder:opacity-50'/>
       </label>
       <label>
         <span>DNI</span>
@@ -84,7 +84,7 @@ export default function FormSocio({socioPatch, getSocios, cleanForm}) {
       </select>
       </label>
       <label>
-        <span>test</span>
+        <span>Socio hasta</span>
       <input type="date" required name="socio_hasta" id="socio_hasta" className='p-1 border rounded-md placeholder:opacity-50 w-full'/>
       </label>
       <button className="mt-2 !text-primary !bg-black-custom hover:!bg-primary hover:!text-black duration-200">{socioPatch?.nombre ? "Editar socio" : "Agregar Socio"}</button>

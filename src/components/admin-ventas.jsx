@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { PiBroom } from 'react-icons/pi'
-import { fetchVentas } from '../services/ventas.service'
+import { fetchVentas, fetchVentasDate } from '../services/ventas.service'
 import FormVenta from './form-venta'
 import { fetchProductos } from '../services/productos.service'
 import DeleteVenta from './admin-venta-delete'
+import { toast } from 'react-toastify'
 
 const initialValues = {
   id_venta: 0,
@@ -17,17 +18,31 @@ export const AdminVentas = () => {
   const [ventaPatch, setVentasPatch] = useState(initialValues)
   const [ventas, setVentas] = useState([])
   const [productos, setProductos] = useState([])
+  const [filterFechas, setFilterFechas] = useState(false)
+  const [fecha_inicio, setFechaInicio] = useState('')
+  const [fecha_fin, setFechaFin] = useState('')
 
   const fetchVentasAction = async () => {
     const {status, data} = await fetchVentas()
     if(status === 200) setVentas(data)
+    setFilterFechas(false)
   }
 
   const fetchProductosAction = async () => {
     const {status, data} = await fetchProductos()
     if(status === 200) setProductos(data)
   }
+  
+  const handleSearchBetweenDates = async () => {
+    if(!fecha_inicio, !fecha_fin) return toast.error("Debe seleccionar las fechas")
 
+    const intervalo = `${fecha_inicio}between${fecha_fin}`;
+    const {status, data} = await fetchVentasDate(intervalo)
+    if (status === 200) {
+      setVentas(data)
+      setFilterFechas(true)
+    }
+  }
 
   useEffect(() => {
     fetchVentasAction()
@@ -42,12 +57,28 @@ export const AdminVentas = () => {
     <div className='flex flex-col md:flex-row gap-4 font-rubik'>
       <div className='flex flex-col gap-2 max-w-96'>
         <div className='sticky top-2 flex flex-col gap-2 items-center'>
-          <FormVenta ventaPatch={ventaPatch} getVentas={fetchVentasAction} productos={productos} cleanForm={handleClean}/>
+          <FormVenta ventaPatch={ventaPatch} getVentas={fetchVentasAction} getProducto={fetchProductosAction} productos={productos} cleanForm={handleClean}/>
           {ventaPatch.id_venta !== 0 && <button onClick={handleClean} className='!bg-primary w-full text-black flex flex-nowrap gap-1 justify-center items-center'><PiBroom /> Limpiar formulario</button>}
         </div>
       </div>
       <div className='p-2 border rounded-md overflow-x-auto w-full overscroll-x-auto min-h-fit'>
         <p className='col-span-4 text-center text-2xl pb-2'>Ventas registradas</p>
+        <div className='pb-2 flex gap-3 items-center'>
+          <p>Filtrar por fechas</p>
+          <div className='flex flex-nowrap gap-2'>
+            <label className='flex flex-col'>
+            <span>Desde</span>
+              <input type='date' name='fecha_inicio' onChange={(e) => setFechaInicio(e.target.value)} className='p-1 border rounded-md placeholder:opacity-50'/>
+            </label>
+            <label className='flex flex-col !text-white'>
+            <span>Hasta</span>
+              <input type='date' name='fecha_fin' onChange={(e) => setFechaFin(e.target.value)} className='p-1 border rounded-md placeholder:opacity-50 '/>
+            </label>
+            <button type='button' onClick={handleSearchBetweenDates} className='!bg-primary text-black-custom hover:!bg-black-custom hover:!text-primary duration-200'>Filtrar</button>
+            {filterFechas && <button type='button' onClick={fetchVentasAction} className='!bg-primary text-black-custom hover:!bg-black-custom hover:!text-primary duration-200'>Ver todas</button>}
+          </div>
+          
+        </div>
         <table className='w-full col-span-4 min-w-fit'>
           <thead className='w-full border border-primary min-w-fit'>
             <tr className='flex flex-nowrap w-full '>
