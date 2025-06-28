@@ -88,6 +88,8 @@ export default function FormProducto({ productoPut, categorias, imagenes, descue
         <input
           type="text"
           required
+          minLength={2}
+          maxLength={80}
           name="nombre"
           placeholder="nombre"
           className="p-1 border rounded-md placeholder:opacity-50"
@@ -98,6 +100,8 @@ export default function FormProducto({ productoPut, categorias, imagenes, descue
         <input
           type="number"
           required
+          min={1}
+          max={899999}
           name="precio"
           placeholder="precio"
           className="p-1 border rounded-md placeholder:opacity-50"
@@ -111,7 +115,7 @@ export default function FormProducto({ productoPut, categorias, imagenes, descue
             required
             name="stock"
             placeholder="stock"
-
+            min={0}
             className="p-1 border rounded-md placeholder:opacity-50"
           />
         </label>
@@ -173,6 +177,8 @@ export default function FormProducto({ productoPut, categorias, imagenes, descue
           name="descripcion"
           id="descripcion"
           rows={4}
+          minLength={2}
+          maxLength={1600}
           placeholder="Descripción"
           className="p-1 border rounded-md placeholder:opacity-50"
         />

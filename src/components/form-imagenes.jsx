@@ -62,11 +62,11 @@ export default function FormImagenes({imagenesPatch, getImagenes, handleClean}) 
       {imagenesPatch?.nombre && <p className="-my-1 font-semibold text-sm text-primary text-center">{imagenesPatch?.nombre}</p>}
       <label>
         <span>Nombre</span>
-        <input type="text" name="nombre" id="nombre" className='p-2 border rounded-md placeholder:opacity-50' />
+        <input type="text" required minLength={3} maxLength={36} name="nombre" id="nombre" className='p-2 border rounded-md placeholder:opacity-50' />
       </label>
       <label>
         <span>URL</span>
-        <input type="text" name="url" id="url" className='p-2 border rounded-md placeholder:opacity-50' />
+        <input type="text" required minLength={3} maxLength={255} name="url" id="url" className='p-2 border rounded-md placeholder:opacity-50' />
       </label>
       <button className="mt-2 !text-primary !bg-black-custom hover:!bg-primary hover:!text-black duration-200" type="submit">{imagenesPatch?.nombre ? "Editar imagen" : "Agregar imagen"}</button>
     </form>
