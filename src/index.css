@@ -3,7 +3,7 @@
 @import "tw-animate-css";
 
 * {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
 }
 
 
