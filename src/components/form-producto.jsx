@@ -160,7 +160,7 @@ export default function FormProducto({ productoPut, categorias, imagenes, descue
           </option>
           {imagenes?.map((imagen, index) => 
             <option key={index} value={imagen.id_imagen} className="text-black capitalize">
-              {imagen.id_imagen}{imagen.nombre}
+              {imagen.nombre}
             </option>
           )}
         </select>
