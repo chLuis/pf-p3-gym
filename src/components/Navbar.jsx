@@ -45,9 +45,9 @@ export const Navbar = () => {
         onClick={(e) => {
           e.stopPropagation()
           setBuscar(!buscar)}}
-        className="text-primary !bg-black-custom !border-primary !text-xl hover:text-yellow-400 transition-colors"
+          className={`!text-xl !rounded-md hover:!border-primary !border-0 !transition-colors !duration-500 ${buscar ? '!bg-primary !text-black-custom': '!bg-black-custom !text-primary'}`}
         >
-          {!buscar ? <FaSearch/> : <FiX/>}
+          <FaSearch/>
         </button>
 
         {pages.map((page, index) => (

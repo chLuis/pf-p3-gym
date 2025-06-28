@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import Factura from './Factura';
 export default function ComprarCarrito({lista, total, envio, cantidad}) {
 
   const [mensaje, setMensaje] = useState("")
+  const [showFactura, setShowFactura] = useState(false)
 
   useEffect(() => {
     const test = lista.reduce((acc, actual) => acc + `${actual.cantidad + ' ' + actual.nombre}\n`, 'Hola, me gustaría comprar: \n' )
@@ -25,7 +27,8 @@ export default function ComprarCarrito({lista, total, envio, cantidad}) {
             <div>$ {total + envio}</div>
           </div>
         </div>
-        <a href={`https://wa.me/3816177174?text=${encodeURIComponent(mensaje)}`} target='_blank' className='mx-4 mb-4 p-3 text-center rounded-md text-white bg-blue-700 hover:bg-blue-800 duration-200 '>Terminar compra</a>
+        <button onClick={() => setShowFactura(true)} className='mx-4 mb-4 p-3 text-center rounded-md text-white bg-blue-700 hover:bg-blue-800 duration-200 '>Terminar compra</button>
+          {showFactura && <Factura lista={lista} total={total} envio={5000} mensaje={mensaje} closeFactura={() => setShowFactura(false)}/>}
         </div>
   )
 }

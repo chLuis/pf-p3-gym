@@ -4,6 +4,7 @@ import { CgSpinner } from 'react-icons/cg'
 import carritoStore from '../store/storeCarrito'
 import { toast } from 'react-toastify'
 import ComprarCarrito from '../components/comprar-carrito'
+import Factura from '../components/Factura'
 
 
 export const Carrito = () => {
