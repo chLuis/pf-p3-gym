@@ -4,9 +4,10 @@ import LogoutButton from "./logoutButton";
 import { CgShoppingCart } from "react-icons/cg";
 import carritoStore from "../store/storeCarrito";
 import userStore from "../store/storeUsuario";
-// import { FiSearch } from "react-icons/fi";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
+import { FiX } from "react-icons/fi";
+import Buscador from "./Buscador";
 
 export const Navbar = () => {
   const carrito = carritoStore(state => state.getCarrito())
@@ -23,7 +24,7 @@ export const Navbar = () => {
 
 
   return (
-    <div className="flex flex-col w-full border-b border-primary">
+    <div className="flex flex-col w-full border-b border-primary" onClick={() => setBuscar(false)}>
     <div className="flex gap-2 items-center justify-between px-4 py-1 w-full font-rubik-dirt">
       <Link to="/" className="flex flex-nowrap gap-1 p-1 items-center">
         <img src="/logo.webp" alt="logo" className="rounded-full aspect-square w-16" />
@@ -40,11 +41,13 @@ export const Navbar = () => {
           <span className="absolute bottom-0 border-b-2 mx-auto border-b-transparent group-hover:border-b-primary inset-x-0 group-hover:animate-grow"></span>
           </Link>}
 
-          <button
-        onClick={() => setBuscar(!buscar)}
+        <button
+        onClick={(e) => {
+          e.stopPropagation()
+          setBuscar(!buscar)}}
         className="text-primary !bg-black-custom !border-primary !text-xl hover:text-yellow-400 transition-colors"
         >
-          <FaSearch/>
+          {!buscar ? <FaSearch/> : <FiX/>}
         </button>
 
         {pages.map((page, index) => (
@@ -62,14 +65,7 @@ export const Navbar = () => {
         <MemberSearch />
       </div>
     </div>
-      {buscar && (
-        <div className="w-full px-4 py-3 bg-black-custom animate-fade-down">
-          <form className="max-w-xl mx-auto flex items-center gap-2">
-            <input type="text" placeholder="Buscar producto..." className="w-full p-2 rounded-md border border-primary bg-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-400" />
-            <button type="submit" className="className="bg-primary hover:bg-yellow-400 text-black font-semibold px-4 py-2 rounded-md>Buscar</button>
-          </form>
-        </div>
-      )}
+      {buscar && <Buscador cerrarBusqueda={setBuscar}/>}
     </div>
   );
 };
