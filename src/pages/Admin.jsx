@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useState } from 'react'
 import { BiBox, BiUser, BiUserPlus } from 'react-icons/bi'
 import { ImImage } from 'react-icons/im'
 import { AdminImagenes } from '../components/admin-imagenes'
@@ -10,15 +10,14 @@ import { FaSalesforce } from 'react-icons/fa'
 import { AdminVentas } from '../components/admin-ventas'
 import userStore from '../store/storeUsuario'
 import UnauthorizedComponent from '../components/unauthorized'
-import { useNavigate } from 'react-router-dom'
 import { FiPercent } from 'react-icons/fi'
 import { TbGridDots } from 'react-icons/tb'
 import { AdminUsuarios } from '../components/admin-usuarios'
 
 export const Admin = () => {
   const usuarioRol = userStore(state => state.getRol())
-  const navigate = useNavigate()
-  const [tabRender, setTabRender] = React.useState("categorias")
+
+  const [tabRender, setTabRender] = useState("categorias")
   
 
   const opciones = [
@@ -30,11 +29,6 @@ export const Admin = () => {
     {nombre: "socios", icono: <BiUser />},
     {nombre: "usuarios", icono: <BiUserPlus />},
   ]
-
-  useEffect(() => {
-    if (!usuarioRol) navigate("/login")
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <div className='min-h-[150dvh] text-white'>
