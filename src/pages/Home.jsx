@@ -7,19 +7,19 @@ export const Home = () => {
   return (
     <>
       <div className="max-h-[80dvh] h-[60dvh] sm:h-[80dvh] relative flex flex-col justify-start pt-24 sm:justify-center sm:pt-0 gap-2 bg-[url('/home.jpg')] bg-cover bg-bottom"> 
-          <div className="flex flex-col px-4 mx-auto sm:mx-0 text-4xl sm:text-6xl lg:text-[90px] font-rubik-dirt min-w-0 w-fit bg-gradient-to-r from-primary/70 to-primary/10 rounded-sm">
+          <div className="flex flex-col px-4 mx-auto sm:mx-0 text-4xl sm:text-6xl lg:text-[90px] font-rubik-dirt min-w-0 w-fit bg-gradient-to-r from-primary/70 to-primary/10 rounded-sm animate-from-left">
             <div className="text-white">POWERHOUSE</div>
             <div className="text-center text-black">GYM</div>
           </div>
-          <div className="text-center text-white sm:text-start sm:text-xl md:text-2xl max-w-[600px] px-4 py-2 font-anton">
+          <div className="text-center text-white sm:text-start sm:text-xl md:text-2xl max-w-[600px] px-4 py-2 font-anton animate-fade-in-verylong">
             La mejor sede de gimnasios de Tucumán, te acompañarán los mejores profesionales deportivos y médicos para cuidarte. No esperes más para empezar.
           </div>
-          <div className="flex flex-col sm:flex-row items-center gap-2 overflow-clip px-2">
+          <div className="flex flex-col sm:flex-row items-center gap-2 overflow-clip px-2 animate-from-rigth">
           
-            <div className="bg-primary/50 w-fit p-2 !text-2xl font-rubik-dirt -skew-x-12">
+            <div className="bg-primary/50 w-fit p-2 !text-2xl font-rubik-dirt -skew-x-12 animate-fade-in">
               <div className="skew-x-12 text-white">Llamanos ahora</div>
             </div>
-            <a href="tel:3811625520" target="_blank" className="group hover:bg-primary bg-primary/30 !text-white w-fit p-2 !text-2xl font-rubik-dirt -skew-x-12 duration-200">
+            <a href="tel:3811625520" target="_blank" className="group hover:bg-primary bg-primary/30 !text-white w-fit p-2 !text-2xl font-rubik-dirt -skew-x-12 animate-fade-in duration-200">
               <div className="group-hover:text-black skew-x-12">381-162-5520</div>
             </a>
           </div>

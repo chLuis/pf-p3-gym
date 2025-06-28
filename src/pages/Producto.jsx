@@ -48,13 +48,14 @@ export const Producto = () => {
   const handleAgregar = () => {
     agregarProducto(producto.id_producto)
     toast.success("Producto agregado al carrito", {
-      autoClose: 1500,
+      position: "bottom-right",
+      autoClose: 1000,
       pauseOnHover: false
     })
   }
   return (
     <>
-  <div className="max-w-5xl mx-auto p-6 grid gap-10 bg-primary">
+  <div className="max-w-5xl mx-auto p-6 grid gap-10 bg-primary mt-2">
 
     {/* Detalle del producto */}
     <div className="bg-black rounded-xl shadow-md p-6 flex flex-col md:flex-row gap-6 items-start">
@@ -91,9 +92,9 @@ export const Producto = () => {
 
           <button
             onClick={handleAgregar}
-            className="!flex !items-center !gap-2 !bg-yellow-400 hover:!bg-yellow-300 !text-black !font-bold !py-2 !px-4 !rounded-full"
+            className="!flex !items-center !gap-2 !bg-primary hover:!bg-black-custom !text-black !font-bold !py-2 !px-4 !rounded-full group duration-200"
           >
-            <MdAddShoppingCart size={20} />
+            <MdAddShoppingCart size={20} className="group-hover:animate-bounce group-hover:!text-white"/>
           </button>
         </div>
       </div>

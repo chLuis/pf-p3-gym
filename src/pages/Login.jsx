@@ -37,8 +37,9 @@ export const Login = () => {
       }
 
       const userData = {
+        user_id: response.data.user.id_usuario,
         userName: response.data.user.usuario,
-        userRol: response.data.user.rol_nombre,
+        user_rol: response.data.user.rol_nombre,
         isBlocked: response.data.user.isBlocked
       }
 

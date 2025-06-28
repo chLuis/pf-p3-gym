@@ -46,12 +46,12 @@ export const Footer = () => {
             </div>
             <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
             <div className="sm:flex sm:items-center sm:justify-between">
-                <span className="text-sm text-gray-500 sm:text-center ">© 2025 <Link to={"/"} className="hover:underline">Powerhouse™</Link>. Todos los derechos reservados.
+                <span className="text-sm text-gray-200 sm:text-center ">© 2025 <Link to={"/"} className="hover:underline">Powerhouse™</Link>. Todos los derechos reservados.
                 </span>
                 <div className="flex gap-6 text-3xl"> {/*Utilizamos react-icons para los botones de sus respectivos iconos */}
-                <a href="#" className="hover:!text-pink-500 duration-200"><FaInstagram/></a>
-                <a href="#" className="hover:!text-green-500 duration-200"><FaWhatsapp/></a>
-                <a href="#" className="hover:!text-blue-400 duration-200"><FaPhoneAlt className="w-6"/></a>
+                <a href="#" className="text-white hover:!text-pink-500 duration-200"><FaInstagram/></a>
+                <a href="#" className="text-white hover:!text-green-500 duration-200"><FaWhatsapp/></a>
+                <a href="#" className="text-white hover:!text-blue-400 duration-200"><FaPhoneAlt className="w-6"/></a>
                 </div>
             </div>
         </div>

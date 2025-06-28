@@ -8,6 +8,8 @@ const userStore = create(
 
       getUsuario: () => get().usuario,
 
+      getRol: () => get().usuario.user_rol,
+
       login: (user) => {
         set({ usuario: user });
       },

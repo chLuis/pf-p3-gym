@@ -14,7 +14,7 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen min-w-full">
+    <div className="flex flex-col min-h-screen min-w-full overflow-clip">
       <Navbar />
       <main className="flex-1">
       <Routes>
