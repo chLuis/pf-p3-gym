@@ -11,23 +11,27 @@ import { Footer } from "./components/Footer";
 import { Error404 } from "./pages/Error404";
 import { Carrito } from "./pages/Carrito";
 import { ToastContainer } from "react-toastify";
+import RequireAdmin from "./components/CheckAuthorization";
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen min-w-full overflow-clip">
       <Navbar />
-      <main className="flex-1">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contacto" element={<Contacto />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/nosotros" element={<Nosotros />} />
-        <Route path="/productos" element={<Productos />} />
-        <Route path="/productos/:id" element={<Producto />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="*" element={<Error404 />} />
-        <Route path="/carrito" element={<Carrito/>}/>
-      </Routes>
+        <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/productos" element={<Productos />} />
+          <Route path="/productos/:id" element={<Producto />} />
+          <Route path="*" element={<Error404 />} />
+          <Route path="/carrito" element={<Carrito/>}/>
+          {/* Protegemos la ruta /admin */}
+          <Route element={<RequireAdmin />} >
+            <Route path="/admin" element={<Admin />} />
+          </Route>
+        </Routes>
       </main>
       <ToastContainer />
       <Footer />
