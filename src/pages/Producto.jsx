@@ -73,7 +73,14 @@ export const Producto = () => {
         <h1 className="text-3xl md:text-4xl text-primary font-bold">{producto.nombre}</h1>
 
         <div className="flex flex-wrap items-center gap-4">
-          <p className="text-lg text-primary font-semibold">💰 ${producto.precio}</p>
+           {producto.descuento > 0 
+        ? <div className="pt-1 !text-primary">
+            <div className="absolute text-xl top-1 right-1 font-rubik-dirt bg-red-700 text-white rounded-4xl px-3 animate-caret-blink">{producto.descuento}% OFF</div>
+            <div className="text-xs line-through">$ {producto.precio}</div>
+            <div className="text-2xl tracking-wide font-rubik-dirt">$ {Math.floor(producto.precio * (1 - producto.descuento/100))}</div>
+          </div>
+        : <div className="text-2xl tracking-wide pt-2 font-rubik-dirt">$ {producto.precio}</div>
+        }
           <p className="text-md text-primary">📦 {producto.categoria}</p>
         </div>
 
@@ -118,7 +125,14 @@ export const Producto = () => {
             />
             <div className="p-4">
               <h3 className="text-lg font-semibold">{p.nombre}</h3>
-              <p className="mt-1">Precio: ${p.precio}</p>
+               {p.descuento > 0 
+        ? <div className="pt-1">
+            <div className="absolute text-xl top-1 right-1 font-rubik-dirt bg-red-700 text-white rounded-4xl px-3 animate-caret-blink">{p.descuento}% OFF</div>
+            <div className="text-xs line-through">$ {p.precio}</div>
+            <div className="text-2xl tracking-wide font-rubik-dirt">$ {Math.floor(p.precio * (1 - p.descuento/100))}</div>
+          </div>
+        : <div className="text-2xl tracking-wide pt-2 font-rubik-dirt">$ {p.precio}</div>
+        }
             </div>
           </Link>
         ))}
