@@ -17,7 +17,7 @@ export default function MemberSearch() {
   const [showMember, setShowMember] = useState(false);
   const [searchMember, setSearchMember] = useState("");
   const [member, setMember] = useState(initialValues);
-
+console.log(member);
   //cierra modal y vuelve valores a los iniciales, elimina los datos del estado de busqueda
   const handleCloseModal = () => {
     setMemberModal(false);
@@ -94,13 +94,16 @@ export default function MemberSearch() {
             {showMember && (
               <div className="flex flex-nowrap gap-1 border rounded-md p-2 mt-6 !font-rubik">
                 <BiUser className="min-w-8 mt-2" />
-                <div>
+                {/* Si el socio tiene el estado de desafiliado solo se muestra la situacion */}
+                {member.nombre_plan === 'desafiliado' ? 
+                <div>Tu membresia fue revocada, comunicate por favor con un encargado del local</div>
+                :<div>
                   <p className="!font-rubik-dirt uppercase">{member?.nombre}</p>
                   <p className="!font-rubik-dirt capitalize">Plan: {member?.nombre_plan}</p>
                   <p className="text-sm">
                     Tu membresia finaliza el día <strong>{member?.socio_hasta}</strong>
                   </p>
-                </div>
+                </div>}
               </div>
             )}
           </div>

@@ -15,9 +15,13 @@ const initialValues = {
 
 
 export const AdminVentas = () => {
+  //Si los valores son los iniciales es que estamos por crear una venta, de lo contrario estamos por editar una existente
   const [ventaPatch, setVentasPatch] = useState(initialValues)
+  //Todas las ventas realizadas
   const [ventas, setVentas] = useState([])
+  //Todos los productos de la DB
   const [productos, setProductos] = useState([])
+  //Filtro para buscar ventas en unas fechas especificas
   const [filterFechas, setFilterFechas] = useState(false)
   const [fecha_inicio, setFechaInicio] = useState('')
   const [fecha_fin, setFechaFin] = useState('')
@@ -34,8 +38,10 @@ export const AdminVentas = () => {
   }
   
   const handleSearchBetweenDates = async () => {
+    //Si no se eligieron ambas fechas tenemos un toast que le informa lo sucedido al usuario
     if(!fecha_inicio, !fecha_fin) return toast.error("Debe seleccionar las fechas")
 
+    //Definimos el intervalo para poder enviarlo en la peticion get
     const intervalo = `${fecha_inicio}between${fecha_fin}`;
     const {status, data} = await fetchVentasDate(intervalo)
     if (status === 200) {

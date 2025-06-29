@@ -4,8 +4,11 @@ import { toast } from "react-toastify"
 import userStore from "../store/storeUsuario";
 
 export default function FormVenta({ventaPatch, getVentas, cleanForm, productos, getProducto}) {
+  //Creamos referencia al formulario
   const formRef = useRef(null)
+  //Producto que seleccionamos para confeccionar el registro de la venta
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+  //Traemos el valor del usuario para poder enviar al backend el nombre del usuario que esta ejecutando la interaccion
   const usuario = userStore(state => state.getUsuario())
 
   const handleProductoChange = (e) => {
@@ -37,7 +40,6 @@ export default function FormVenta({ventaPatch, getVentas, cleanForm, productos, 
           setProductoSeleccionado(null)
           formRef.current.reset()
         } else {
-          console.log(data);
           toast.error(data?.message || "Error al agregar venta")
         }
       } else {
@@ -57,6 +59,7 @@ export default function FormVenta({ventaPatch, getVentas, cleanForm, productos, 
   }
 
   useEffect(() => {
+    //Seteamos el producto se elije para la venta como null para no guardar estados anteriores
     setProductoSeleccionado(null)
     if (ventaPatch?.id_venta !== 0) {
       formRef.current.id_producto.value = ventaPatch.id_producto;
@@ -76,7 +79,6 @@ export default function FormVenta({ventaPatch, getVentas, cleanForm, productos, 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className='flex flex-col gap-2 border h-fit p-4 rounded-md w-full'>
       <p className="text-center font-semibold">{ventaPatch?.id_venta !== 0 ? "Editar venta" : "Agregar venta"}</p>
-      {/* {ventaPatch?.id_venta && <p className="-my-1 font-semibold text-sm text-primary text-center">----</p>} */}
       <label>
         <span>Producto</span>
         <select name="id_producto" defaultValue={ventaPatch.id_producto} onChange={(e) => handleProductoChange(e.target.value)} className="p-1 border rounded-md placeholder:opacity-50 max-w-[350px] w-full">

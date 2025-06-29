@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 export default function FormPlan({id_socio, getSocios, cleanForm}) {
   const [cantidad, setCantidad] = useState(0);
 
+  //Con esta funcion, enviamos la cantidad de meses a agregar y el id del socio que va a recibir el aumento, hacemos uso de un procedimiento en mysql
   const handleTime = async (e) => {
     e.preventDefault();
     const {data} = await axios.post(`${import.meta.env.VITE_BACK}/socios/agregar-tiempo`, {id_socio, cantidad})

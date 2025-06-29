@@ -9,7 +9,6 @@ export const AdminSocios = () => {
   const [socioPatch, setSocioPatch] = React.useState(initialValues)
   const [socios, setSocios] = React.useState([]);
 
-
   function cleanForm() {
     setSocioPatch(initialValues)
   }
@@ -28,9 +27,11 @@ export const AdminSocios = () => {
     <div className='flex flex-row gap-4 font-rubik'>
       <div className='flex flex-col gap-2'>
         <div className='sticky top-2 flex flex-col gap-2 items-center'>
+        {/* Formulario para crear o editar socios */}
         <FormSocio socioPatch={socioPatch} getSocios={fetchSocios} cleanForm={cleanForm}/>
         {socioPatch?.nombre &&
           <>
+          {/* Solo si existe un nombre para socioPatch podemos asignarle al socio mas tiempo por 1 2 o 3 meses que se extienden de acuerdo a su fecha de finalizacion actual */}
             <FormPlan id_socio={socioPatch.id_socio} getSocios={fetchSocios} cleanForm={cleanForm}/>
             <button onClick={cleanForm} className='!bg-primary w-full text-black flex flex-nowrap gap-1 justify-center items-center'>
               <PiBroom /> Limpiar formulario
@@ -66,11 +67,8 @@ export const AdminSocios = () => {
                   </td>
                 </tr>
               )}
-                
               </tbody>
             </table>
-            
-              
           </div>
         </div>
   )
