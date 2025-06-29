@@ -12,6 +12,7 @@ export const Contacto = () => {
   const handleSubmit = (e) => {
     //agarra los valores del form
     setLoading(true)
+    toast.info("Enviando formulario")
     e.preventDefault();
     //Ejemplo de envio de formulario, con una demora y avisamos al usuario que el formulario se esta enviando y luego finalizamos con un toast de envio exitoso y reseteamos los valores del form
     setTimeout(() => {

@@ -46,7 +46,7 @@ export const Admin = () => {
           )}          
         
         </div>
-        {/* HAcemos validaciones para cada elemento, algunos no pueden ser utilizados por alguien que no sea un administrador o superadmin */}
+        {/* Hacemos validaciones para cada elemento, algunos no pueden ser utilizados por alguien que no sea un administrador o superadmin */}
         <div className='w-full max-w-7xl mx-auto pt-4'>
           {tabRender === "categorias" ? onlyAdmins(usuarioRol) ? <AdminCategorias /> : <UnauthorizedComponent /> : null}
           {tabRender === "imagenes" ? onlyAdmins(usuarioRol) ? <AdminImagenes /> : <UnauthorizedComponent /> : null}

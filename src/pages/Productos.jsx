@@ -5,21 +5,31 @@ import { fetchCategorias, fetchProductos } from "../services/productos.service"
 import { PiBroom } from "react-icons/pi"
 
 export const Productos = () => {
+  //Todas las categorias de la DB
   const [categorias, setCategorias] = useState([])
+  //Todos los productos de la DB
   const [productos, setProductos] = useState([])
+  //Todos los productos que cumplen con el requisito del filtrado
   const [productosFiltered, setProductosFiltered] = useState([])
+  //Minimo de precio para filtrar
   const [minPrice, setMinPrice] = useState(0)
+  //Maximo de precio para filtrar
   const [maxPrice, setMaxPrice] = useState(900000)
+  //Espacio de tiempo para realizar las busquedas
   const [isLoading, setIsLoading] = useState(true)
+  //Lista de categorias que se incluyen en la busqueda
   const [categoryFiter, setCategoryFiter] = useState([])
+  //Mostrar/Ocultar el filtrador
   const [showFilter, setShowFilter] = useState(false)
 
+  //Remueve filtros, los vuelve a su valor original
   const handleRemoveFilters = () => {
     setCategoryFiter([])
     setMinPrice(0)
     setMaxPrice(900000)
   }
 
+  //Trae todos los productos y guarda en ambos estados para poder trabajar con el filtrado sin realizar peticiones extra a la DB
   const fetchProductosAction = async () => {
     const {status, data} = await fetchProductos()
     if(status === 200) {
@@ -28,6 +38,7 @@ export const Productos = () => {
     }
   }
 
+  //Trae todas las categorias para mapearlas entre las opciones de filtrado
   const fetchCategoriasAction = async () => {
     const {status, data} = await fetchCategorias()
     if(status === 200) setCategorias(data)
@@ -38,8 +49,11 @@ export const Productos = () => {
     fetchCategoriasAction()
   },[])
 
+  //Si cambia algo, entonces realizo el filtrado
   useEffect(() => {
     setIsLoading(true)
+    //Tiempo de 300 milisegundos para simular una carga en base de datos y a la vez evitar que por cada toque a los filtros se dispare el filtrado
+    //Si no hay filtrado por categoria (length = 0) entonces solo filtro por precios
     const timeout = setTimeout(() => {
       const handleFilter = () => {
         categoryFiter.length === 0 
@@ -52,7 +66,7 @@ export const Productos = () => {
     return () => clearTimeout(timeout)
   },[productos, categoryFiter, maxPrice, minPrice])
 
-
+  //Para manejar el minimo que no supere al maximo
   const handleMinPrice = (value) => {
     if(+value > maxPrice) {
       setMinPrice(value)
@@ -61,10 +75,12 @@ export const Productos = () => {
     setMinPrice(value)
   }
 
+  //Manejar el valor maximo
   const handleMaxPrice = (value) => {
     setMaxPrice(value)
   }
 
+  //Agregar a la lista de filtrados si es que no existe o de lo contrario removerlo
   const handleCategory = (value) => {
     if(categoryFiter.some(text => text === value)){
       setCategoryFiter(categoryFiter.filter(text => text !== value))
@@ -108,7 +124,9 @@ export const Productos = () => {
       <PiBroom /> Quitar filtros
     </button>}
       </div>
+      {/* Si esta en estado de carga, se anula la posibbilidad de seleccion y se agrega una opacidad */}
       <div className={`${isLoading ? "opacity-30 pointer-events-none" : ""} h-fit col-span-8 sm:col-span-5 md:col-span-6 grid grid-cols-2 lg:grid-cols-3 gap-7`}>
+        {/* Mapeo de productos en forma de grilla */}
         {productosFiltered.map((producto, index) =>
           <ProductCard key={index} producto={producto}/>
         )}
