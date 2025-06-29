@@ -1,5 +1,6 @@
 const Planes = () => {
 
+    //Creamos un array de objetos para recorrer con .map
     const membresias = [
         {
             plan: "Plan básico",

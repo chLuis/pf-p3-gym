@@ -3,7 +3,6 @@ import Planes from "../components/Planes"
 import Actividades from "../components/Actividades"
 
 export const Home = () => {
-  //AGUSTIN
   return (
     <>
       <div className="max-h-[80dvh] h-[60dvh] sm:h-[80dvh] relative flex flex-col justify-start pt-24 sm:justify-center sm:pt-0 gap-2 bg-[url('/home.jpg')] bg-cover bg-bottom"> 

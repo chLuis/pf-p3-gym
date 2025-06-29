@@ -1,3 +1,5 @@
+import { Link as ScrollLink } from "react-scroll"
+
 const Actividades = () => {
     
     return(
@@ -7,7 +9,15 @@ const Actividades = () => {
                 <aside className="col-span-1 text-white p-6 sticky bg-black-custom top-0 h-fit self-start">
                     <h1 className="!text-2xl text-center lg:text-start lg:!text-4xl mb-6 font-rubik-dirt">Todas las actividades que buscas</h1>
                     <p className="text-center lg:text-start">En Powerhouse tenemos todas las actividades que buscas, combinar distintas actividades es fundamental para mantener la motivacion y disfrutrar al maximo tu rutina deportiva</p>
-                    <a href="#planes" className="!block !mx-auto !rounded-full !text-center !bg-primary !text-black hover:!bg-amber-200 !px-6 !py-3 !text-lg !font-semibold !mt-6 !w-fit">Asociate</a> 
+                    <ScrollLink
+                    to="planes"           
+                    smooth={true}         
+                    duration={900}        
+                    offset={-40}          
+                    className="!block !mx-auto !rounded-full !text-center !bg-primary !text-black hover:!bg-amber-200 !px-6 !py-3 !text-lg !font-semibold !mt-6 !w-fit"
+                    >
+                    Asociate
+                    </ScrollLink>
                 </aside>
                 {/*Cargamos las opciones de actividades a la derecha */}
                 <section className="col-span-2 text-white p-6 space-y-12">

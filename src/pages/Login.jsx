@@ -6,16 +6,16 @@ import userStore from "../store/storeUsuario";
 
 export const Login = () => {
 
-  const [usuario, setUsuario] = useState("")
-  const [usuario_password, setPassword] = useState("")
-  const login = userStore(state => state.login)
-  const usuarioLogged = userStore(state => state.getUsuario)
+  const [usuario, setUsuario] = useState("") //Estado para guardar el usuario
+  const [usuario_password, setPassword] = useState("") //Estado para guardar la contraseña
+  const login = userStore(state => state.login) //Traemos el login desde zustand
+  const usuarioLogged = userStore(state => state.getUsuario) //Traemos desde zustand para ver si hay usuarios guardados
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    const userrr = usuarioLogged()
-    if (userrr?.userName) {
+    const userrr = usuarioLogged() //Llamamos desde el store para ver si hay un usuario logueado
+    if (userrr?.userName) { //Si existe y esta logueado te redirige a admin
     navigate("/admin")
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,17 +26,17 @@ export const Login = () => {
     e.preventDefault()
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACK}/login/`, {
+      const response = await axios.post(`${import.meta.env.VITE_BACK}/login/`, { //Solicitud post con usuario y contraseña ingresados
         usuario,
         usuario_password,
       })
 
-      if (response.data.user.isBlocked) {
+      if (response.data.user.isBlocked) { //Si el usuario esta bloqueado nos avisa y bloquea la funcion
         toast.info("Tu usuario esta bloqueado")
         return
       }
 
-      const userData = {
+      const userData = { //Si no esta bloqueado arma un objeto con los datos
         user_id: response.data.user.id_usuario,
         userName: response.data.user.usuario,
         user_rol: response.data.user.rol_nombre,

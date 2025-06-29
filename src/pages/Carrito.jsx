@@ -74,11 +74,13 @@ const montoTotal = (array_carrito) => {
     setCarritoProductos(newCarritoProductos)
   }
 
+  //Funcion para eliminar un producto del carrito
   const handleDeleteProductoCarrito = (id) => {
     eliminarProducto(id)
     toast.success("Producto eliminado del carrito")
   }
 
+  //Funcion para vaciar el carrito, borra todos los productos
   const handleVaciarCarrito = () => {
     vaciarCarrito()
     toast.success("Carrito vaciado")

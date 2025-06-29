@@ -19,7 +19,6 @@ export default function ProductCard({producto}) {
         : <div className="text-2xl tracking-wide pt-2 font-rubik-dirt">$ {producto.precio}</div>
         }
         <div className="py-1 text-sm">Mismo precio en 6 cuotas de ${producto.descuento > 0 ? ((producto.precio - (producto.precio * producto.descuento/100))/6).toFixed(2) : (producto.precio/6).toFixed(2)}</div>
-        {/* <div className="py-1">Envio gratis</div> */}
       </div>
     </Link>
   )

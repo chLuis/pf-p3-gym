@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export default function DeleteCategoria({ id_categoria, getCategorias }) {
-  async function handleDelete() {
+  async function handleDelete() {  //Funcion asincronica para eliminar una categoria
     try {
       const { data } = await axios.delete(
         `${import.meta.env.VITE_BACK}/productos/categorias/${id_categoria}`
