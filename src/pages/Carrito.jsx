@@ -4,21 +4,18 @@ import { CgSpinner } from 'react-icons/cg'
 import carritoStore from '../store/storeCarrito'
 import { toast } from 'react-toastify'
 import ComprarCarrito from '../components/comprar-carrito'
-import Factura from '../components/Factura'
 
 
 export const Carrito = () => {
-  //const {carrito, eliminarProducto, vaciarCarrito } = carritoStore()
   const carrito = carritoStore(state => state.getCarrito());
   const eliminarProducto = carritoStore(state => state.eliminarProducto);
   const vaciarCarrito = carritoStore(state => state.vaciarCarrito);
-
 
   const [carritoProductos, setCarritoProductos] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [total, setTotal] = useState(0)
   const [cantidad, setCantidad] = useState(0)
-  //const carrito = [1,2,6, 3,4,5]
+
 
   //Traigo la informacion de los productos del carrito y le asigno en cantidad el valor 1 por defecto si hay stock
   const fetchCarritoAction = async (car) => {
@@ -28,11 +25,17 @@ export const Carrito = () => {
   }
   
   //Calculo el total de acuerdo al array de mis productos, multiplicando cantidad por precio
-  const montoTotal = (array_carrito) => {
-    const total = array_carrito.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0)
-    const cantidad = array_carrito.reduce((acc, producto) => acc + producto.cantidad, 0)
-    return {total, cantidad}
-  }
+const montoTotal = (array_carrito) => {
+  const total = array_carrito.reduce((acc, producto) => {
+    const precioFinal = producto.descuento > 0
+      ? producto.precio * (1 - (producto.descuento / 100))
+      : producto.precio;
+    return acc + precioFinal * producto.cantidad;
+  }, 0);
+
+  const cantidad = array_carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+  return { total, cantidad };
+};
 
   //Hago la busqueda de los productos cuando el componente se monta
   useEffect(() => {
@@ -124,7 +127,7 @@ export const Carrito = () => {
                 <button className='aspect-square !max-w-7 !w-7 h-7 flex items-center justify-center !bg-black-custom !border !border-primary !text-white' onClick={() => handleCantidad(1, producto.id_producto)}>+</button>
               </td>
               <td className='w-20 text-center'>{producto.stock}</td>
-              <td className=''>{producto.precio}</td>
+              <td className=''>{(producto.descuento > 0 ? producto.precio * (1 - (producto.descuento / 100)) : producto.precio).toFixed(2)}</td>
               <td className='px-1'>
                 <button 
                   onClick={() => handleDeleteProductoCarrito(producto.id_producto)} 

@@ -37,7 +37,8 @@ export default function FormVenta({ventaPatch, getVentas, cleanForm, productos, 
           setProductoSeleccionado(null)
           formRef.current.reset()
         } else {
-          toast.error(data?.data?.message || "Error al agregar socio")
+          console.log(data);
+          toast.error(data?.message || "Error al agregar venta")
         }
       } else {
         const {data} = await axios.patch(`${import.meta.env.VITE_BACK}/ventas/${venta.id_venta}`, venta)
@@ -89,7 +90,7 @@ export default function FormVenta({ventaPatch, getVentas, cleanForm, productos, 
       {productoSeleccionado?.stock && <div>Queda un stock de {productoSeleccionado?.stock}</div>}
       <label>
         <span>Cantidad</span>
-        <input type="number" required name="cantidad" id="cantidad" min={0} max={productoSeleccionado?.stock || 1} className='p-1 border rounded-md placeholder:opacity-50 w-full'/>
+        <input type="number" required name="cantidad" id="cantidad" min={1} max={ventaPatch?.id_producto !== 0 ? 999 : productoSeleccionado?.stock || 1} className='p-1 border rounded-md placeholder:opacity-50 w-full'/>
       </label>
       <label>
         <span>Monto</span>

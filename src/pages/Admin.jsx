@@ -35,7 +35,7 @@ export const Admin = () => {
     <div className='min-h-[150dvh] text-white'>
       <header className='p-4 font-rubik'>
         <h2 className='text-4xl font-semibold'>Panel de Aministración</h2>
-        <p>Gestiona imágenes, productos y membresías de tu gimnasio fácilmente.</p>
+        <p>Gestiona imágenes, productos y membresías de tu gimnasio fácilmente</p>
       </header>
       <div className='border-t w-full p-4'>
         <div className='w-fit rounded-md px-2 py-1 flex flex-nowrap gap-3 mx-auto'>
@@ -48,10 +48,10 @@ export const Admin = () => {
         </div>
         {/* HAcemos validaciones para cada elemento, algunos no pueden ser utilizados por alguien que no sea un administrador o superadmin */}
         <div className='w-full max-w-7xl mx-auto pt-4'>
-          {tabRender === "categorias" ? anyBody(usuarioRol) ? <AdminCategorias /> : <UnauthorizedComponent /> : null}
-          {tabRender === "imagenes" ? anyBody(usuarioRol) ? <AdminImagenes /> : <UnauthorizedComponent /> : null}
-          {tabRender === "descuentos" ? anyBody(usuarioRol) ? <AdminDescuentos /> : <UnauthorizedComponent /> : null}
-          {tabRender === "productos" ? anyBody(usuarioRol) ? <AdminProductos /> : <UnauthorizedComponent /> : null}
+          {tabRender === "categorias" ? onlyAdmins(usuarioRol) ? <AdminCategorias /> : <UnauthorizedComponent /> : null}
+          {tabRender === "imagenes" ? onlyAdmins(usuarioRol) ? <AdminImagenes /> : <UnauthorizedComponent /> : null}
+          {tabRender === "descuentos" ? onlyAdmins(usuarioRol) ? <AdminDescuentos /> : <UnauthorizedComponent /> : null}
+          {tabRender === "productos" ? onlyAdmins(usuarioRol) ? <AdminProductos /> : <UnauthorizedComponent /> : null}
           {tabRender === "ventas" ? anyBody(usuarioRol) ? <AdminVentas /> : <UnauthorizedComponent /> : null}
           {tabRender === "socios" ? onlyAdmins(usuarioRol) ? <AdminSocios /> : <UnauthorizedComponent /> : null}
           {tabRender === "usuarios" ? onlyAdmins(usuarioRol) ? <AdminUsuarios isAuthorized={onlySuperadmin(usuarioRol)}/> : <UnauthorizedComponent /> : null}

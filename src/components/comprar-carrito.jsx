@@ -19,7 +19,7 @@ export default function ComprarCarrito({lista, total, envio, cantidad}) {
         <div className='p-4 text-sm flex flex-col gap-1'>
           <div className='flex justify-between'>
             <div>Productos ({cantidad})</div>
-            <div>$ {total}</div>
+            <div>$ {total.toFixed(2)}</div>
           </div>
           <div className='flex justify-between'>
             <div>Envío</div>
@@ -27,7 +27,7 @@ export default function ComprarCarrito({lista, total, envio, cantidad}) {
           </div>
           <div className='flex justify-between font-bold pt-4'>
             <div>Total</div>
-            <div>$ {total + envio}</div>
+            <div>$ {(total + envio).toFixed(2)}</div>
           </div>
         </div>
         <button onClick={() => setShowFactura(true)} className='mx-4 mb-4 p-3 text-center rounded-md text-white bg-blue-700 hover:bg-blue-800 duration-200 '>Terminar compra</button>

@@ -20,8 +20,8 @@ const Factura = ({lista, total, envio, closeFactura, mensaje}) => {
                         <tr key={producto.id_producto} className="border-b">
                             <td className="items-center p-2">{producto.nombre}</td>
                             <td className="text-center p-2">{producto.cantidad}</td>
-                            <td className="text-right p-2">{producto.precio}</td>
-                            <td className="text-right p-2">{producto.precio * producto.cantidad}</td>
+                            <td className="text-right p-2">{(producto.descuento > 0 ? producto.precio * (1 - (producto.descuento / 100)) : producto.precio).toFixed(2)}</td>
+                            <td className="text-right p-2">{((producto.descuento > 0 ? producto.precio * (1 - (producto.descuento / 100)) : producto.precio) * producto.cantidad).toFixed(2)}</td>
                         </tr>
                     ))}
                     <tr>
