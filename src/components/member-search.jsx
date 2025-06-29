@@ -17,7 +17,6 @@ export default function MemberSearch() {
   const [showMember, setShowMember] = useState(false);
   const [searchMember, setSearchMember] = useState("");
   const [member, setMember] = useState(initialValues);
-console.log(member);
   //cierra modal y vuelve valores a los iniciales, elimina los datos del estado de busqueda
   const handleCloseModal = () => {
     setMemberModal(false);
