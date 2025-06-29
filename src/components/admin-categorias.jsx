@@ -4,6 +4,7 @@ import FormCategoria from "./form-categoria";
 import { PiBroom } from "react-icons/pi";
 import DeleteCategoria from "./admin-categoria-delete";
 
+//Valores iniciales para el formulario de categoria
 const initialValues = {
   id_categoria: 0,
   nombre: "",

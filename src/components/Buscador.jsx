@@ -4,12 +4,14 @@ import { Link } from "react-router-dom"
 
 const Buscador = ({cerrarBusqueda}) => {
 
-    const [busqueda, setBusqueda] = useState("")
-    const [resultados, setResultados] = useState([])
+    const [busqueda, setBusqueda] = useState("") //Estado para escribir la busqueda
+    const [resultados, setResultados] = useState([]) //Estado para mostrar los resultados
     const [sinResultados, setSinResultados] = useState(false) // Estado para determinar si ya se realizó la consulta
 
-    const buscarProd = async () => {
+    //Funcion para realizar la busqueda de productos
+    const buscarProd = async () => { 
 
+        //Si el resultado de la busqueda es 0 no se busca nada
         if (busqueda.length < 1) return setResultados([])
 
         try {
@@ -36,6 +38,7 @@ const Buscador = ({cerrarBusqueda}) => {
             <button className="bg-primary hover:bg-yellow-400 text-black font-semibold px-4 py-2 rounded-md" onClick={buscarProd}>Buscar...</button>
         {resultados.length > 0 && (
             <div className="absolute flex flex-col gap-1 top-11 bg-white w-full shadow max-h-60 overflow-auto mt-1 rounded-md z-10">
+                {/*Cuando clickeamos el producto nos lo muestra */}
             {resultados.map((producto, index) => (
                 <Link
                 key={index}
@@ -49,6 +52,7 @@ const Buscador = ({cerrarBusqueda}) => {
             ))}
             </div>
         )}
+        {/*Si el resultado de la busqueda no coincide se muestra un mensaje */}
         {sinResultados && resultados.length === 0 && (
             <div className="absolute top-11 !bg-white w-full shadow max-h-60 overflow-auto mt-1 rounded-md z-10">
             <p className="p-2 !text-gray-600 italic">No se encontraron resultados para ' {busqueda} '.</p>
