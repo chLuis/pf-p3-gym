@@ -39,11 +39,12 @@ const Buscador = ({cerrarBusqueda}) => {
             {resultados.map((producto, index) => (
                 <Link
                 key={index}
-                className="p-2 hover:bg-yellow-100 cursor-pointer"
+                className="p-2 hover:bg-yellow-100 cursor-pointer flex flex-nowrap gap-1 items-center"
                 onClick={() => cerrarBusqueda(false)}
                 to={`/productos/${producto.id_producto}`}
                 >
-                {producto.nombre}
+                    <img src={producto.url} alt={producto.nombre} className="h-16 w-16 object-contain" />
+                    {producto.nombre}
                 </Link>
             ))}
             </div>
