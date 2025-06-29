@@ -7,15 +7,17 @@ import { FaWhatsapp } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 export const Producto = () => {
-  const { id } = useParams();
-  const agregarProducto = carritoStore(state => state.agregarProducto)
+  const { id } = useParams(); //Traemos el ID desde la url
+  const agregarProducto = carritoStore(state => state.agregarProducto) //Funcion para agregar productos desde el store
 
 
-  const [producto, setProducto] = useState([])
-  const [relacionados, setRelacionados] = useState([])
+  const [producto, setProducto] = useState([]) //Estado para mostrar el producto
+  const [relacionados, setRelacionados] = useState([]) //Estado para mostrar productos relacionados
 
+  //Funcion para buscar un producto especifico por id
   const fetchProductoUnicoAction = async (id) => {
     try {
+      //Datos que vienen desde el backend
       const data = await fetchProductoUnico(id)
       setProducto(data)
     } catch (error) {
@@ -30,10 +32,10 @@ export const Producto = () => {
 
   useEffect(() => {
     if (producto.id_categoria) {
-      const fetchRelacionados = async () => {
+      const fetchRelacionados = async () => { //Funcion asincronica para traer los productos relacionados
         try {
           const data = await fetchProductosRelacionados(producto.id_categoria)
-          setRelacionados(data.filter(prod=>prod.id_producto !== producto.id_producto))
+          setRelacionados(data.filter(prod=>prod.id_producto !== producto.id_producto)) //Filtro para que no aparezca el mismo producto
         } catch (error) {
           console.error("Error al traer productos relacionados", error)
         }
@@ -43,7 +45,7 @@ export const Producto = () => {
     }
   }, [producto])
 
-  // getCarrito()
+  //Funcion para agregar productos al carrito, se consume dentro de un boton posteriormente
   const handleAgregar = () => {
     agregarProducto(producto.id_producto)
     toast.success("Producto agregado al carrito", {
